@@ -1,0 +1,85 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+    font-family: "Times New Roman", Times, serif;
+    font-style: normal;
+    font-size: 14px;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+
+  table {
+    width: 100%;    
+    font-style: normal;
+    font-size: 11px;
+  }
+  
+
+button {
+  margin: 16px 8px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.secciones-card {
+  width: 100%; 
+}
+
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+.verde {
+  width: 22px;
+  height: 22px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #006400;
+  margin-top: 28px;
+}
+
+.amarillo {
+  width: 22px;
+  height: 22px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #FFD700;
+  margin-top: 28px;
+}
+
+.rojo {
+  width: 22px;
+  height: 22px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #FF0000;
+  margin-top: 28px;
+}

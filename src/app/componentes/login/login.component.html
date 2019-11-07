@@ -1,0 +1,29 @@
+<body class="text-center">
+    <form class="form-signin" #formLog="ngForm" (ngSubmit)="onSubmit()">
+
+        <img class="mb-4 ContenedorLogo" src="assets/img/sig-250-250.png" width="250" height="250">
+
+        <h1 class="h3 mb-3 font-weight-normal">Ingrese sus credenciales</h1>
+
+        <mat-form-field>
+            <input matInput placeholder='Nombre del usuario' name="nombre" #nombre="ngModel"
+                [(ngModel)]="modelo.USUARIO" value={{modelo.USUARIO}} required>
+            <mat-error *ngIf="!nombre.valid && nombre.touched">
+                Ingrese su usuario
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Ingrese su clave" [type]="hide ? 'password' : 'text'" name="pass"
+                #pass="ngModel" [(ngModel)]="modelo.PASS" value={{modelo.PASS}} required>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="!pass.valid && pass.touched">
+                Ingrese su clave
+            </mat-error>
+        </mat-form-field>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+
+        <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+    </form>
+</body>

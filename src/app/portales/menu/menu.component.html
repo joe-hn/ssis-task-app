@@ -1,0 +1,30 @@
+<header>
+    <div class="fixed-top" *ngIf="!flag">
+      <mat-toolbar color="primary">
+        <mat-toolbar-row>
+          <span [routerLink]="['inicio']">SMP</span>
+  
+          <span class="example-spacer"></span>
+          <span>{{usuario}}</span>
+          
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+  
+            <button mat-menu-item *ngIf="!flag">
+              <mat-icon>fingerprint</mat-icon>
+              <span (click)="cierreSecion()">Cierre sesión</span>
+            </button>          
+  
+            <button mat-menu-item *ngIf="!flag">
+              <mat-icon>view_module</mat-icon>
+              <span [routerLink]="['/catalogo']">Catálogos</span>
+            </button>
+         
+          </mat-menu>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </div>
+  </header> 
+  
