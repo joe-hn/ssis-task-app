@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <form #formAdd="ngForm" (ngSubmit)="onSubmit(buttonType)">
+        <h5 class="jumbotron-heading">Finalizar tarea</h5>
+        <hr class="mb-4">
+
+        <div class="card border-succes" style="width: 50rem;">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Completa</h5>
+                    <p class="card-text">La tarea se completo satisfactoriamente.</p>
+                    <button (click)="onSubmit('Completa')" class="btn btn-success btn-sm">Marcarla como
+                        completada</button>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="card border-danger" style="width: 50rem;">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Cancelar</h5>
+                    <p class="card-text">La tarea presenta alguna serie de inconvenientes que impiden su re
+                        planificación o que se complete. </p>
+                    <button (click)="onSubmit('cancelada')" class="btn btn-danger btn-sm">Marcarla como
+                        cancelada</button>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary btn-sm"
+                [routerLink]="['/ejecucion', modelo.ID]">Regresar</button>
+        </div>
+    </form>
+
+</div>

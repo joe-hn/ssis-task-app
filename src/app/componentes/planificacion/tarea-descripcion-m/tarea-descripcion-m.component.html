@@ -1,0 +1,35 @@
+<div class="container">
+    <form #formAdd="ngForm">
+        <h5 class="jumbotron-heading">Seguimiento de la tarea</h5>
+        <hr class="mb-4">
+
+        <div class="card border-primary">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Comentario</h5>
+                    <p class="card-text">Comentarios de seguimiento referente a la tarea.</p>
+                    <button type="button" [routerLink]="['/tarea-descripcion-a', modelo.ID]" class="btn btn-primary btn-sm">Comentar</button>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="card border-warning">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Solicitud de apoyo</h5>
+                    <p class="card-text">Solicitud de apoyo en la ejecución de la tarea.</p>
+                    <button  type="button" [routerLink]="['/tarea-descripcion-solicitud', modelo.ID]" class="btn btn-warning btn-sm">Solicitar apoyo</button>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary btn-sm"
+                [routerLink]="['/ejecucion', modelo.ID]">Regresar</button>
+        </div>
+    </form>
+
+</div>

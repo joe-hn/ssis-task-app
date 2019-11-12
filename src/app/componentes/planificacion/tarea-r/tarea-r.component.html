@@ -1,0 +1,74 @@
+<div class="container">
+    <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+        <h5 class="jumbotron-heading">Replanificar tarea</h5>
+        <hr class="mb-4">
+
+        <div class="example-container">
+                     
+
+            <mat-form-field>
+                <mat-select placeholder="Responsable" name="responsable" #responsable="ngModel"
+                    [(ngModel)]="modelo.RESPONSABLE_ID" required>
+                    <mat-option *ngFor='let r of usuarioModelo' [value]='r.ID'>
+                        {{r.NOMBRE}}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+           
+
+            <mat-form-field>
+                <input matInput placeholder="Nombre de la tarea" name="nombre" #nombre="ngModel"
+                    [(ngModel)]="modelo.NOMBRE" value={{modelo.NOMBRE}} required>
+                <mat-error *ngIf="!nombre.valid && nombre.touched">
+                    Ingrese el nombre de la tarea
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <textarea matInput placeholder="Descripción de la tarea" name="descripcion" #descripcion="ngModel"
+                    [(ngModel)]="modelo.DESCRIPCION" value={{modelo.DESCRIPCION}} required></textarea>
+                <mat-error *ngIf="!descripcion.valid && descripcion.touched">
+                    Ingrese la descripción de la tarea
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Días" name="dia" #dia="ngModel" [(ngModel)]="modelo.DIAS"
+                    value={{modelo.DIAS}} required>
+                <mat-error *ngIf="!dia.valid && dia.touched">
+                    Ingrese los días de la tarea
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [matDatepicker]="pickerInicio" [min]="date" placeholder="Fecha de inicio replanificada"
+                    name="fie" #fie="ngModel" [(ngModel)]="date" required readonly>
+                <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+                <mat-datepicker #pickerInicio></mat-datepicker>
+               
+            </mat-form-field>
+
+            <mat-form-field>
+                    <textarea matInput placeholder="Motivo de la re planificación" name="replanificacion" #replanificacion="ngModel"
+                        [(ngModel)]="modelo.REPLANIFICACION" value={{modelo.REPLANIFICACION}} required></textarea>
+                    <mat-error *ngIf="!replanificacion.valid && replanificacion.touched">
+                        Ingrese el motivo de la re planificación
+                    </mat-error>
+                </mat-form-field>
+
+        </div>
+
+        <hr class="mb-4">
+
+        <div class="btn-group btn-group-toggle">
+            <button mat-icon-button type="submit" matTooltip="Guardar y salir">
+                <mat-icon>save</mat-icon>
+            </button>
+            <button mat-icon-button [routerLink]="['/ejecucion', modelo.ID]" matTooltip="Cancelar">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
+
+    </form>
+</div>

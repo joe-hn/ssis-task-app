@@ -1,0 +1,36 @@
+export class tareaOperacion {
+    constructor(
+       
+        public CATEGORIA_TAREA_OPERACION_ID: number,       
+        public CATEGORIA_TAREA_OPERACION: string,
+        public ID: number,
+        public EDT: number,
+        public EDT_DESCRIPCION: string,
+        public NOMBRE: string,
+        public DESCRIPCION: string,       
+        public RESPONSABLE_ID: number,
+        public FECHA_INICIO_ESTIMADA: string,
+        public FECHA_INICIO: string,
+        public DIAS: number,
+        public FECHA_FINAL_ESTIMADA: string,
+        public FECHA_FINAL: string,      
+        public ESTADO: string,      
+        public DIRECCION_ID: number,
+        public FECHA_INICIO_ESTIMADA_DESCRIPCION: string,
+        public FECHA_INICIO_DESCRIPCION: string,
+        public FECHA_FINAL_ESTIMADA_DESCRIPCION: string,
+        public FECHA_FINAL_DESCRIPCION: string,     
+        public RESPONSABLE: string,
+        public DIRECCION: string,    
+        public EDT_MAX: number,
+        public ANIO: number,
+        public MES: number,
+        public DIA: number,
+        public USR: string,
+        public REPLANIFICACION: string,
+        public ALERTA_ESTIMADO: string,
+        public ALERTA: string,
+        public EDT_TAREA: string,
+        public DIAS_FALTANTES: Number
+    ) { }
+}

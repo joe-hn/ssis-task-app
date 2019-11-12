@@ -1,0 +1,59 @@
+<div class="container">
+    <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+        <h5 class="jumbotron-heading">Solicitud de apoyo</h5>
+        <hr class="mb-4">
+
+        <div class="example-container">
+            <mat-form-field>
+                <mat-select placeholder="Dirección" name="direccion" #direccion="ngModel"
+                    [(ngModel)]="emplModelo.DIRECCION_ID" required>
+                    <mat-option *ngFor='let r of direccionModelo' [value]='r.ID' (click)="onSelectedEmpleado()">
+                        {{r.NOMBRE}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="Cargo" name="cargo" #cargo="ngModel" [(ngModel)]="emplModelo.CARGO_ID"
+                    required>
+                    <mat-option *ngFor='let r of cargoModelo' [value]='r.ID' (click)="onSelectedEmpleado()">
+                        {{r.NOMBRE}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                    <mat-select placeholder="Remitente" name="remitente" #remitente="ngModel" [(ngModel)]="modelo.RESPONSABLE_ID"
+                        required>
+                        <mat-option *ngFor='let r of empleadoModelo' [value]='r.ID'>
+                            {{r.NOMBRE}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+            <mat-form-field>
+                <textarea matInput placeholder="Comentario de la tarea" name="descripcion" #descripcion="ngModel"
+                    [(ngModel)]="modelo.DESCRIPCION" value={{modelo.DESCRIPCION}} required></textarea>
+                <mat-error *ngIf="!descripcion.valid && descripcion.touched">
+                    Ingrese el comentario de la tarea
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <hr class="mb-4">
+
+        <div class="btn-group btn-group-toggle">
+            <button mat-icon-button type="submit" matTooltip="Guardar y salir">
+                <mat-icon>save</mat-icon>
+            </button>
+
+            <button mat-icon-button type="button" [routerLink]="['/ejecucion', modelo.TAREA_ID]" matTooltip="Cancelar">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
+
+
+    </form>
+</div>

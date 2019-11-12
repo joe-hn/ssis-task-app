@@ -1,0 +1,31 @@
+<div class="container">
+    <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+        <h5 class="jumbotron-heading">Agregar comentario</h5>
+        <hr class="mb-4">
+
+        <div class="example-container">
+            <mat-form-field>
+                <textarea matInput placeholder="Comentario de la tarea" name="descripcion" #descripcion="ngModel"
+                    [(ngModel)]="modelo.DESCRIPCION" value={{modelo.DESCRIPCION}} required></textarea>
+                <mat-error *ngIf="!descripcion.valid && descripcion.touched">
+                    Ingrese el comentario de la tarea
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <hr class="mb-4">
+
+        <div class="btn-group btn-group-toggle">
+            <button mat-icon-button type="submit" matTooltip="Guardar y salir">
+                <mat-icon>save</mat-icon>
+            </button>
+
+            <button mat-icon-button type="button" [routerLink]="['/ejecucion', modelo.TAREA_OPERACION_ID]" matTooltip="Cancelar">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
+
+
+    </form>
+</div>

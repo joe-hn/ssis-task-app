@@ -1,0 +1,28 @@
+<div class="container">
+    <form #formAdd="ngForm">
+        <h5 class="jumbotron-heading">Tarea pendiente de inicio</h5>
+        <hr class="mb-4">
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><small>Categoría tarea: {{modelo.CATEGORIA_TAREA_OPERACION}}</small></li>
+            <li class="list-group-item"><small>Dirección: {{modelo.DIRECCION}}</small></li>            
+            <li class="list-group-item"><small>Tarea: {{modelo.EDT_TAREA}}</small></li>            
+            <li class="list-group-item list-group-item-warning"><small>Días estimados: {{modelo.DIAS}}</small></li>
+            <li class="list-group-item list-group-item-warning"><small>Fecha de inicio estimada: {{modelo.FECHA_INICIO_ESTIMADA_DESCRIPCION}}</small></li>
+            <li class="list-group-item list-group-item-danger"><small>Fecha de finalización estimada: {{modelo.FECHA_FINAL_ESTIMADA_DESCRIPCION}}</small></li>
+            <li class="list-group-item list-group-item-warning"><small>Responsable: {{modelo.RESPONSABLE}}</small></li>
+            <li class="list-group-item"><small>Descripción: {{modelo.DESCRIPCION}}</small></li>
+        </ul>
+
+        <hr class="mb-4">
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary btn-sm" [routerLink]="['/tablero']">Regresar</button>
+            <button type="button" class="btn btn-secondary btn-sm"
+                [routerLink]="['/tarea-e', modelo.ID]">Editar</button>
+            <button type="submit" class="btn btn-secondary btn-sm" [routerLink]="['/tarea-d', modelo.ID]">Eliminar</button>
+            <button type="submit" class="btn btn-secondary btn-sm" (click)="onSubmit('I')">Iniciar</button>
+        </div>
+    </form>
+
+</div>

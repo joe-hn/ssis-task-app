@@ -1,0 +1,81 @@
+<div class="container">
+    <form #formAdd="ngForm" (ngSubmit)="onSubmit(buttonType)">
+        <h5 class="jumbotron-heading">Agregar nueva tarea</h5>
+        <hr class="mb-4">
+
+        <div class="example-container">
+            <mat-form-field>
+                <mat-select placeholder="Catgoría tarea" name="categoria" #categoria="ngModel"
+                    [(ngModel)]="modelo.CATEGORIA_TAREA_OPERACION_ID" required>
+                    <mat-option *ngFor='let r of categoriaModelo' [value]='r.ID' (click)="onSelectCategoria()">
+                        {{r.EDT_CATEGORIA}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="Responsable" name="responsable" #responsable="ngModel"
+                    [(ngModel)]="modelo.RESPONSABLE_ID" required>
+                    <mat-option *ngFor='let r of usuarioModelo' [value]='r.ID'>
+                        {{r.NOMBRE}}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="EDT" name="edt" #edt="ngModel" [(ngModel)]="modelo.EDT"
+                    value={{modelo.EDT}} required readonly>
+                <mat-error *ngIf="!edt.valid && edt.touched">
+                    Ingrese el EDT del indicador
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Nombre de la tarea" name="nombre" #nombre="ngModel"
+                    [(ngModel)]="modelo.NOMBRE" value={{modelo.NOMBRE}} required>
+                <mat-error *ngIf="!nombre.valid && nombre.touched">
+                    Ingrese el nombre de la tarea
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <textarea matInput placeholder="Descripción de la tarea" name="descripcion" #descripcion="ngModel"
+                    [(ngModel)]="modelo.DESCRIPCION" value={{modelo.DESCRIPCION}} required></textarea>
+                <mat-error *ngIf="!descripcion.valid && descripcion.touched">
+                    Ingrese la descripción de la tarea
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Días" name="dia" #dia="ngModel" [(ngModel)]="modelo.DIAS"
+                    value={{modelo.DIAS}} required>
+                <mat-error *ngIf="!dia.valid && dia.touched">
+                    Ingrese los días de la tarea
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [matDatepicker]="pickerInicio" [min]="dateValidador"
+                    placeholder="Fecha de inicio estimada" name="fie" #fie="ngModel" [(ngModel)]="date" required
+                    readonly>
+                <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+                <mat-datepicker #pickerInicio></mat-datepicker>
+            </mat-form-field>
+
+        </div>
+        
+        <hr class="mb-4">
+
+        <div class="btn-group btn-group-toggle">
+            <button mat-icon-button type="submit" matTooltip="Guardar y salir">
+                <mat-icon>save</mat-icon>
+            </button>    
+            <button mat-icon-button type="button" [routerLink]="['/pendiente', modelo.ID]" matTooltip="Cancelar">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>    
+
+
+    </form>
+</div>

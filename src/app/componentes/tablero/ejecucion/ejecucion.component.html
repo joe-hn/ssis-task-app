@@ -1,0 +1,71 @@
+<div class="container">
+    <form #formAdd="ngForm">
+        <h5 class="jumbotron-heading">Tarea en ejecución</h5>
+        <hr class="mb-4">
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><small>Dirección: {{modelo.DIRECCION}}</small></li>
+            <li class="list-group-item"><small>Categoría: {{modelo.CATEGORIA_TAREA_OPERACION}}</small></li>
+            <li class="list-group-item"><small>Tarea: {{modelo.TAREA}}</small></li>
+            <li class="list-group-item"><small>Responsable: {{modelo.RESPONSABLE}}</small></li>
+            <li class="list-group-item"><small>Fecha de inicio: {{modelo.FECHA_INICIO_DESCRIPCION}}</small></li>
+            <li class="list-group-item"><small>Descripción: {{modelo.DESCRIPCION}}</small></li>  
+        </ul>
+
+        <hr class="mb-4">
+
+        <div class="row bg-light">
+            <div class="col text-dark bg-light">
+                <div class="card-header font-italic text-center">
+                    Seguimiento de la tarea
+                </div>
+
+                <br>
+
+                <div *ngFor="let des of tareaDescripcionModelo">
+                    <div *ngIf="des.ES_COMENTARIO" class="card border-primary mb-3">
+                        <div class="card-header"><small>Comentario de: {{des.EMISOR}}</small></div>
+                        <div class="card-body text-secundary">
+                            <p class="card-text"><small>{{des.DESCRIPCION}}</small></p>
+                            <p class="card-text"><small
+                                    class="text-muted"><em>{{des.FECHA_SOLICITUD_DESCRIPCION}}</em></small>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div *ngIf="!des.ES_COMENTARIO" class="card border-warning mb-3">
+                        <div class="card-header"><small>Solicitud apoyo para: {{des.RECEPTOR}}</small></div>
+                        <div class="card-body text-primary">
+                            <p class="card-text"><small class="text-muted">Solicitud</small></p>
+                            <p class="card-text"><small>{{des.DESCRIPCION}}</small></p>
+                            <p class="card-text"><small
+                                    class="text-muted"><em>{{des.FECHA_SOLICITUD_DESCRIPCION}}</em></small>
+                            </p>
+                        </div>
+                        <div *ngIf="des.RESPUESTA" class="card-body text-right text-success">
+                            <p class="card-text"><small class="text-muted">Respuesta</small></p>
+                            <p class="card-text"><small>{{des.RESPUESTA}}</small></p>
+                            <p class="card-text"><small
+                                    class="text-muted"><em>{{des.FECHA_RESPUESTA_DESCRIPCION}}</em></small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary btn-sm" [routerLink]="['/tablero']">Regresar</button>
+            <button type="button" class="btn btn-secondary btn-sm"
+                [routerLink]="['/tarea-descripcion-m', tareaModelo.ID]">Agregar seguimiento</button>
+            <button type="submit" class="btn btn-secondary btn-sm" [routerLink]="['/tarea-r', tareaModelo.ID]">Re
+                planificar</button>
+            <button type="submit" class="btn btn-secondary btn-sm"
+                [routerLink]="['/tarea-f', tareaModelo.ID]">Finalizar</button>
+        </div>
+    </form>
+
+</div>

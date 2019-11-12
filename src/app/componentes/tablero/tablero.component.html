@@ -1,1 +1,147 @@
-<p>tablero works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>add_circle_outline</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                    <mat-icon>view_headline</mat-icon>
+                    <span [routerLink]="['/tarea-a']">Nueva Tarea</span>
+                </button>
+            </mat-menu>
+        </div>
+        <div class="col-sm-8 text-center">
+            <h6 class="jumbotron-heading">Tablero de tareas</h6>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col bg-light">
+            <div class="font-italic text-center">
+                <p>Pendientes de inicio</p>
+            </div>
+
+            <div class="card border-secondary mb-3" *ngFor="let pendiente of tareaPendienteModelo">
+                <div class="card border-primary">
+                    <div class="card-header">
+                        <small>{{pendiente.EDT_TAREA}}</small>
+                    </div>
+                    <div class="card-body text-secondary">
+                        <p class="card-title"><small>{{pendiente.DESCRIPCION}}</small></p>
+                        <p class="card-text"><small><em>Días estimados: {{pendiente.DIAS}}, <mark>inicio estimado:
+                                        {{pendiente.FECHA_INICIO_ESTIMADA_DESCRIPCION}}</mark>,
+                                    finalización estimada: {{pendiente.FECHA_FINAL_ESTIMADA_DESCRIPCION}}, responsable:
+                                    {{pendiente.RESPONSABLE}}</em></small></p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <button mat-icon-button type="button" [routerLink]="['/pendiente', pendiente.ID]"
+                                        matTooltip="Ver tarea">
+                                        <mat-icon>info</mat-icon>
+                                    </button>
+                                </div>
+
+                                <div class="col col-md-auto">
+                                    <div class="verde" *ngIf="pendiente.ALERTA_ESTIMADO === 'VERDE'"></div>
+                                    <div class="amarillo" *ngIf="pendiente.ALERTA_ESTIMADO === 'AMARILLO'"></div>
+                                    <div class="rojo" *ngIf="pendiente.ALERTA_ESTIMADO === 'ROJO'"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col">
+            <div class="font-italic text-center">
+                <p>En ejecución</p>
+            </div>
+
+            <div class="card border-secondary mb-3" *ngFor="let ejecucion of tareaEjecucionModelo">
+                <div class="card border-success">
+                    <div class="card-header">
+                        <small>{{ejecucion.EDT_TAREA}}</small>
+                    </div>
+                    <div class="card-body text-secondary">
+                        <p class="card-title"><small>{{ejecucion.DESCRIPCION}}</small></p>
+                        <p class="card-text"><small><em>Días: {{ejecucion.DIAS}}, inicio:
+                                    {{ejecucion.FECHA_INICIO_DESCRIPCION}},
+                                    <mark>finalización: {{ejecucion.FECHA_FINAL_DESCRIPCION}}</mark>, responsable:
+                                    {{ejecucion.RESPONSABLE}}</em></small></p>
+                        <p class="card-text"><small><mark>Días pendientes para que finalize la tarea:
+                                    {{ejecucion.DIAS_FALTANTES}}</mark></small></p>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <button mat-icon-button type="button" [routerLink]="['/ejecucion', ejecucion.ID]"
+                                        matTooltip="Ver tarea">
+                                        <mat-icon>info</mat-icon>
+                                    </button>
+                                </div>
+
+                                <div class="col col-md-auto">
+                                    <div class="verde" *ngIf="ejecucion.ALERTA === 'VERDE'"></div>
+                                    <div class="amarillo" *ngIf="ejecucion.ALERTA === 'AMARILLO'"></div>
+                                    <div class="rojo" *ngIf="ejecucion.ALERTA === 'ROJO'"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col bg-light">
+            <div class="font-italic text-center">
+                <p>Re planificadas</p>
+            </div>
+
+            <div class="card border-secondary mb-3" *ngFor="let replanificado of tareaReplanificadaModelo">
+                <div class="card border-warning">
+                    <div class="card-header">
+                        <small>{{replanificado.EDT_TAREA}}</small>
+                    </div>
+                    <div class="card-body text-secondary">
+                        <p class="card-title"><small>{{replanificado.DESCRIPCION}}</small></p>
+                        <p class="card-text"><small><em>Días: {{replanificado.DIAS}}, inicio:
+                                    {{replanificado.FECHA_INICIO_DESCRIPCION}},
+                                    <mark>finalización: {{replanificado.FECHA_FINAL_DESCRIPCION}}</mark>, responsable:
+                                    {{replanificado.RESPONSABLE}}</em></small></p>
+                        <p class="card-text"><small><mark>Días pendientes para que finalize la tarea:
+                                    {{replanificado.DIAS_FALTANTES}}</mark></small></p>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <button mat-icon-button type="button"
+                                        [routerLink]="['/ejecucion', replanificado.ID]" matTooltip="Ver tarea">
+                                        <mat-icon>info</mat-icon>
+                                    </button>
+                                </div>
+
+                                <div class="col col-md-auto">
+                                    <div class="verde" *ngIf="replanificado.ALERTA === 'VERDE'"></div>
+                                    <div class="amarillo" *ngIf="replanificado.ALERTA === 'AMARILLO'"></div>
+                                    <div class="rojo" *ngIf="replanificado.ALERTA === 'ROJO'"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

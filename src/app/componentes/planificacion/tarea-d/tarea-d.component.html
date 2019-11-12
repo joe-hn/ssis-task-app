@@ -1,0 +1,62 @@
+<div class="container">
+    <form #formAdd="ngForm" (ngSubmit)="onSubmit(buttonType)">
+        <h5 class="jumbotron-heading">Agregar nueva tarea</h5>
+        <hr class="mb-4">
+
+        <div class="example-container">          
+            <mat-form-field>
+                <input matInput placeholder="Catgoría tarea" name="categoria" #categoria="ngModel"
+                    [(ngModel)]="modelo.CATEGORIA_TAREA_OPERACION" value={{modelo.CATEGORIA_TAREA_OPERACION}} required readonly>             
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Dirección" name="direccion" #direccion="ngModel"
+                    [(ngModel)]="modelo.DIRECCION" value={{modelo.DIRECCION}} required readonly>             
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Responsable" name="responsable" #categoria="ngModel"
+                    [(ngModel)]="modelo.RESPONSABLE" value={{modelo.RESPONSABLE}} required readonly>             
+            </mat-form-field>
+          
+            <mat-form-field>
+                <input matInput placeholder="EDT" name="edt" #edt="ngModel" [(ngModel)]="modelo.EDT"
+                    value={{modelo.EDT}} required readonly>              
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Nombre de la tarea" name="nombre" #nombre="ngModel"
+                    [(ngModel)]="modelo.NOMBRE" value={{modelo.NOMBRE}} required readonly>             
+            </mat-form-field>
+
+            <mat-form-field>
+                <textarea matInput placeholder="Descripción de la tarea" name="descripcion" #descripcion="ngModel"
+                    [(ngModel)]="modelo.DESCRIPCION" value={{modelo.DESCRIPCION}} required readonly></textarea>              
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Días" name="dia" #dia="ngModel" [(ngModel)]="modelo.DIAS"
+                    value={{modelo.DIAS}} required readonly>             
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Fecha de inicio estimada:" name="fechaInicio" #dia="ngModel" [(ngModel)]="modelo.FECHA_INICIO_ESTIMADA_DESCRIPCION"
+                    value={{modelo.FECHA_INICIO_ESTIMADA_DESCRIPCION}} required readonly>             
+            </mat-form-field>
+
+        </div>
+        
+        <hr class="mb-4">
+
+        <div class="btn-group btn-group-toggle">
+            <button mat-icon-button type="submit" matTooltip="Borrar y salir">
+                <mat-icon>save</mat-icon>
+            </button>    
+            <button mat-icon-button type="button" [routerLink]="['/pendiente', modelo.ID]" matTooltip="Cancelar">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>    
+
+
+    </form>
+</div>
