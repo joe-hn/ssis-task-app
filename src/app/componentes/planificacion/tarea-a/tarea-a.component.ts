@@ -24,8 +24,10 @@ export class TareaAComponent implements OnInit {
   categoriaModelo: categoriaTareaOperacion[];
   usuarioLogeo: usuario;
   usuarioModelo: usuario[];
+  esTarea: boolean;
 
   date: Date;
+  dateEntrega: Date;
   dateValidador: Date;
 
   constructor(
@@ -39,12 +41,14 @@ export class TareaAComponent implements OnInit {
     this.usuarioLogeo = JSON.parse(localStorage.getItem('_user'));
     this.date = new Date();
     this.dateValidador = new Date();
+    this.dateEntrega = new Date();
+    this.esTarea = true;
   }
 
   ngOnInit() {
     this.GET_CATEGORIA();
     this.modelo.DIRECCION_ID = this.usuarioLogeo.DIRECCION_ID;
-    
+
     if (!this.usuarioLogeo.JEFE) {
       this.modelo.RESPONSABLE_ID = this.usuarioLogeo.ID;
     }
@@ -65,7 +69,7 @@ export class TareaAComponent implements OnInit {
   }
 
   onSelectCategoria() {
-    this._apiCategoria.GetMaxCount(this.modelo.CATEGORIA_TAREA_OPERACION_ID).subscribe(response => {
+    this._api.GetMaxCount(this.modelo.CATEGORIA_TAREA_OPERACION_ID).subscribe(response => {      
       if (response.modelo != null) {
         this.modelo.EDT = response.modelo.EDT_MAX + 1;
       } else {
@@ -75,71 +79,64 @@ export class TareaAComponent implements OnInit {
   }
 
   onSubmit(buttonType) {
-    if (buttonType === "S") {
-      if (this.modelo.NOMBRE && this.modelo.RESPONSABLE_ID != 0 && this.modelo.EDT != 0 && this.modelo.DIAS != 0) {
-        this.modelo.USR = localStorage.getItem('_u');
+    this.modelo.USR = localStorage.getItem('_u');
+    var tareaEdt = this.categoriaModelo.find(x => x.ID == this.modelo.CATEGORIA_TAREA_OPERACION_ID);
+    this.modelo.EDT_DESCRIPCION = tareaEdt.EDT_DESCRIPCION + '.' + this.modelo.EDT;
 
-        var tareaEdt = this.categoriaModelo.find(x => x.ID == this.modelo.CATEGORIA_TAREA_OPERACION_ID);
-        this.modelo.EDT_DESCRIPCION = tareaEdt.EDT_DESCRIPCION + '.' + this.modelo.EDT;
+    if (this.esTarea) {
+      this.modelo.FECHA_INICIO_ESTIMADA_DESCRIPCION = moment(this.date).locale('es').format('LL');
+      this.modelo.FECHA_INICIO_ESTIMADA = moment(this.date).format('YYYYMMDD');
 
-        this.modelo.FECHA_INICIO_ESTIMADA_DESCRIPCION = moment(this.date).locale('es').format('LL');
-        this.modelo.FECHA_INICIO_ESTIMADA = moment(this.date).format('YYYYMMDD');
+      var contador = 1;
+      var FFDate = this.date;
 
-        var contador = 1;
-        var FFDate = this.date;
-
-        while (contador <= this.modelo.DIAS) {
-          if (FFDate.getDay() == 6 || FFDate.getDay() == 0) {
-          } else {
-            contador++;
-          }
-          if (contador <= this.modelo.DIAS) {
-            FFDate.setDate(this.date.getDate() + 1);
-          }
+      while (contador <= this.modelo.DIAS) {
+        if (FFDate.getDay() == 6 || FFDate.getDay() == 0) {
+        } else {
+          contador++;
         }
-
-        this.modelo.FECHA_FINAL_ESTIMADA_DESCRIPCION = moment(FFDate).locale('es').format('LL');
-        this.modelo.FECHA_FINAL_ESTIMADA = moment(FFDate).format('YYYYMMDD');
-
-        this._api.Post(this.modelo).subscribe(response => {
-          this._router.navigate(['/tablero']);
-        });
-
+        if (contador <= this.modelo.DIAS) {
+          FFDate.setDate(this.date.getDate() + 1);
+        }
       }
-    } else if (buttonType === "SC") {
-      if (this.modelo.NOMBRE && this.modelo.RESPONSABLE_ID != 0 && this.modelo.EDT != 0 && this.modelo.DIAS != 0) {
 
-        this.modelo.USR = localStorage.getItem('_u');
-        var tareaEdt = this.categoriaModelo.find(x => x.ID == this.modelo.CATEGORIA_TAREA_OPERACION_ID);
-        this.modelo.EDT_DESCRIPCION = tareaEdt.EDT_DESCRIPCION + '.' + this.modelo.EDT;
+      this.modelo.FECHA_FINAL_ESTIMADA_DESCRIPCION = moment(FFDate).locale('es').format('LL');
+      this.modelo.FECHA_FINAL_ESTIMADA = moment(FFDate).format('YYYYMMDD');
 
-        this.modelo.FECHA_INICIO_ESTIMADA_DESCRIPCION = moment(this.date).locale('es').format('LL');
-        this.modelo.FECHA_INICIO_ESTIMADA = moment(this.date).format('YYYYMMDD');
-
-        var contador = 1;
-        var FFDate = this.date;
-
-        while (contador <= this.modelo.DIAS) {
-          if (FFDate.getDay() == 6 || FFDate.getDay() == 0) {
-          } else {
-            contador++;
-          }
-          if (contador <= this.modelo.DIAS) {
-            FFDate.setDate(this.date.getDate() + 1);
-          }
-        }
-
-        this.modelo.FECHA_FINAL_ESTIMADA_DESCRIPCION = moment(FFDate).locale('es').format('LL');
-        this.modelo.FECHA_FINAL_ESTIMADA = moment(FFDate).format('YYYYMMDD');
-
-        this._api.Post(this.modelo).subscribe(response => {
+      this._api.Post(this.modelo).subscribe(response => {
+        if (buttonType === "S") {
+          this._router.navigate(['/tablero']);
+        } else if (buttonType === "SC") {
           this.modelo.NOMBRE = '';
           this.modelo.DESCRIPCION = '';
           this.modelo.EDT = (this.modelo.EDT + 1);
           this.modelo.DIAS = 0;
           this.date = new Date();
-        });
-      }
+        }
+      });
+
+    } else {
+      this.modelo.FECHA_INICIO_ESTIMADA_DESCRIPCION = moment(Date.now()).locale('es').format('LL');
+      this.modelo.FECHA_INICIO_ESTIMADA = moment(Date.now()).format('YYYYMMDD');
+      this.modelo.FECHA_INICIO_DESCRIPCION = moment(Date.now()).locale('es').format('LL');
+      this.modelo.FECHA_INICIO = moment(Date.now()).format('YYYYMMDD');
+
+      this.modelo.FECHA_FINAL_ESTIMADA_DESCRIPCION = moment(this.dateEntrega).locale('es').format('LL');
+      this.modelo.FECHA_FINAL_ESTIMADA = moment(this.dateEntrega).format('YYYYMMDD');
+      this.modelo.FECHA_FINAL_DESCRIPCION = moment(this.dateEntrega).locale('es').format('LL');
+      this.modelo.FECHA_FINAL = moment(this.dateEntrega).format('YYYYMMDD');
+
+      this._api.PostTareaEntrega(this.modelo).subscribe(response => {
+        if (buttonType === "S") {
+          this._router.navigate(['/tablero']);
+        } else if (buttonType === "SC") {
+          this.modelo.NOMBRE = '';
+          this.modelo.DESCRIPCION = '';
+          this.modelo.EDT = (this.modelo.EDT + 1);
+          this.modelo.DIAS = 0;
+          this.date = new Date();
+        }
+      });
     }
 
   }

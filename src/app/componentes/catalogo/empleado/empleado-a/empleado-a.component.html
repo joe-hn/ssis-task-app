@@ -1,0 +1,63 @@
+<div class="container">
+    <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+
+        <h6>Agregar nuevo empleado</h6>
+        <hr class="mb-4">
+
+        <div class="example-container">
+            <mat-form-field>
+                <mat-select placeholder="Dirección" name="direccion" #direccion="ngModel" [(ngModel)]="modelo.DIRECCION_ID" required>
+                    <mat-option *ngFor='let r of direccionModelo' [value]='r.ID'>
+                        {{r.NOMBRE}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="!direccion.valid && direccion.touched">
+                    Ingrese la dirección
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="Cargo" name="cargo" #cargo="ngModel"
+                    [(ngModel)]="modelo.CARGO_ID" required>
+                    <mat-option *ngFor='let r of cargoModelo' [value]='r.ID'>
+                        {{r.NOMBRE}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="!cargo.valid && cargo.touched">
+                    Ingrese el cargo
+                </mat-error>
+            </mat-form-field> 
+
+            <mat-form-field>
+                <input matInput placeholder="Nombre" name="nombre" #nombre="ngModel"
+                    [(ngModel)]="modelo.NOMBRE" value={{modelo.NOMBRE}} required>
+                <mat-error *ngIf="!nombre.valid && nombre.touched">
+                    Ingrese el nombre
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Email" name="email" #email="ngModel" [(ngModel)]="modelo.EMAIL"
+                    value={{modelo.EMAIL}} required>
+                <mat-error *ngIf="!email.valid && email.touched">
+                    Ingrese el correo electrónico
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <hr class="mb-4">
+
+        <div class="btn-group btn-group-toggle">
+            <button mat-icon-button type="submit" matTooltip="Guardar">
+                <mat-icon>save</mat-icon>
+            </button>
+
+            <button mat-icon-button type="button" [routerLink]="['/catalogo']" matTooltip="Cancelar">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
+
+
+    </form>
+</div>

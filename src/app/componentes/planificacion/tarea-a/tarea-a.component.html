@@ -1,5 +1,5 @@
 <div class="container">
-    <form #formAdd="ngForm" (ngSubmit)="onSubmit(buttonType)">
+    <form #formAdd="ngForm">
         <h5 class="jumbotron-heading">Agregar nueva tarea</h5>
         <hr class="mb-4">
 
@@ -50,7 +50,13 @@
                     Ingrese la descripción de la tarea
                 </mat-error>
             </mat-form-field>
+        </div>
 
+        <div class="example-container">
+            <mat-checkbox class="example-margin" name="chk" #chk="ngModel" [(ngModel)]="esTarea">Es una tarea planificada</mat-checkbox>
+        </div>
+
+        <div class="example-container" *ngIf="esTarea">
             <mat-form-field>
                 <input matInput placeholder="Días" name="dia" #dia="ngModel" [(ngModel)]="modelo.DIAS"
                     value={{modelo.DIAS}} required>
@@ -65,6 +71,16 @@
                     readonly>
                 <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
                 <mat-datepicker #pickerInicio></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="example-container" *ngIf="!esTarea">
+            <mat-form-field>
+                <input matInput [matDatepicker]="pickerEntrega" [min]="dateValidador"
+                    placeholder="Fecha de entrega" name="fie" #fie="ngModel" [(ngModel)]="dateEntrega" required
+                    readonly>
+                <mat-datepicker-toggle matSuffix [for]="pickerEntrega"></mat-datepicker-toggle>
+                <mat-datepicker #pickerEntrega></mat-datepicker>
             </mat-form-field>
         </div>
 

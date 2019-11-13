@@ -1,0 +1,31 @@
+<div class="container">
+    <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+
+        <h5 class="jumbotron-heading">Eliminar cargo</h5>
+        <hr class="mb-4">
+
+        <div class="example-container">
+            <mat-form-field>
+                <input matInput placeholder="Nombre del cargo" name="nombre" #nombre="ngModel"
+                    [(ngModel)]="modelo.NOMBRE" value={{modelo.NOMBRE}} required>
+                <mat-error *ngIf="!nombre.valid && nombre.touched">
+                    Ingrese el nombre del cargo
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <hr class="mb-4">
+
+        <div class="btn-group btn-group-toggle">
+            <button mat-icon-button type="submit" matTooltip="Guardar">
+                <mat-icon>save</mat-icon>
+            </button>
+
+            <button mat-icon-button type="button" [routerLink]="['/catalogo']" matTooltip="Cancelar">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
+
+    </form>
+</div>

@@ -6,9 +6,25 @@ import { LoginComponent } from './componentes/login/login.component';
 
 import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
 
+import { TipoDireccionAComponent } from './componentes/catalogo/tipo-direccion/tipo-direccion-a/tipo-direccion-a.component';
+import { TipoDireccionEComponent } from './componentes/catalogo/tipo-direccion/tipo-direccion-e/tipo-direccion-e.component';
+import { TipoDireccionDComponent } from './componentes/catalogo/tipo-direccion/tipo-direccion-d/tipo-direccion-d.component';
+
+import { DireccionAComponent } from './componentes/catalogo/direccion/direccion-a/direccion-a.component';
+import { DireccionEComponent } from './componentes/catalogo/direccion/direccion-e/direccion-e.component';
+import { DireccionDComponent } from './componentes/catalogo/direccion/direccion-d/direccion-d.component';
+
 import { CatgoriaTareaOperacionAComponent } from './componentes/catalogo/categoria-tarea-operacion/catgoria-tarea-operacion-a/catgoria-tarea-operacion-a.component';
 import { CatgoriaTareaOperacionEComponent } from './componentes/catalogo/categoria-tarea-operacion/catgoria-tarea-operacion-e/catgoria-tarea-operacion-e.component';
 import { CatgoriaTareaOperacionDComponent } from './componentes/catalogo/categoria-tarea-operacion/catgoria-tarea-operacion-d/catgoria-tarea-operacion-d.component';
+
+import { CargoAComponent } from './componentes/catalogo/cargo/cargo-a/cargo-a.component';
+import { CargoEComponent } from './componentes/catalogo/cargo/cargo-e/cargo-e.component';
+import { CargoDComponent } from './componentes/catalogo/cargo/cargo-d/cargo-d.component';
+
+import { EmpleadoAComponent } from './componentes/catalogo/empleado/empleado-a/empleado-a.component';
+import { EmpleadoEComponent } from './componentes/catalogo/empleado/empleado-e/empleado-e.component';
+import { EmpleadoDComponent } from './componentes/catalogo/empleado/empleado-d/empleado-d.component';
 
 import { TareaAComponent } from './componentes/planificacion/tarea-a/tarea-a.component';
 import { TareaEComponent } from './componentes/planificacion/tarea-e/tarea-e.component';
@@ -44,9 +60,25 @@ const routes: Routes = [
 
   { path: 'catalogo', component: CatalogoComponent },
 
+  { path: 'tipo-direccion-a', component: TipoDireccionAComponent },
+  { path: 'tipo-direccion-e/:id', component: TipoDireccionEComponent },
+  { path: 'tipo-direccion-d/:id', component: TipoDireccionDComponent },
+
+  { path: 'direccion-a', component: DireccionAComponent },
+  { path: 'direccion-e/:id', component: DireccionEComponent },
+  { path: 'direccion-d/:id', component: DireccionDComponent },
+
   { path: 'categoria-tarea-operacion-a', component: CatgoriaTareaOperacionAComponent },
   { path: 'categoria-tarea-operacion-e/:id', component: CatgoriaTareaOperacionEComponent },
   { path: 'categoria-tarea-operacion-d/:id', component: CatgoriaTareaOperacionDComponent },
+
+  { path: 'cargo-a', component: CargoAComponent },
+  { path: 'cargo-e/:id', component: CargoEComponent },
+  { path: 'cargo-d/:id', component: CargoDComponent },
+
+  { path: 'empleado-a', component: EmpleadoAComponent },
+  { path: 'empleado-e/:id', component: EmpleadoEComponent },
+  { path: 'empleado-d/:id', component: EmpleadoDComponent },
 
   { path: 'pendiente/:id', component: PendienteComponent }
 

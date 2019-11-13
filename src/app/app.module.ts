@@ -31,6 +31,22 @@ import { CatgoriaTareaOperacionDComponent } from './componentes/catalogo/categor
 import { CatgoriaTareaOperacionEComponent } from './componentes/catalogo/categoria-tarea-operacion/catgoria-tarea-operacion-e/catgoria-tarea-operacion-e.component';
 import { PendienteComponent } from './componentes/tablero/pendiente/pendiente.component';
 import { TareaDComponent } from './componentes/planificacion/tarea-d/tarea-d.component';
+import { CargoComponent } from './componentes/catalogo/cargo/cargo.component';
+import { DireccionComponent } from './componentes/catalogo/direccion/direccion.component';
+import { EmpleadoComponent } from './componentes/catalogo/empleado/empleado.component';
+import { TipoDireccionComponent } from './componentes/catalogo/tipo-direccion/tipo-direccion.component';
+import { CargoAComponent } from './componentes/catalogo/cargo/cargo-a/cargo-a.component';
+import { CargoDComponent } from './componentes/catalogo/cargo/cargo-d/cargo-d.component';
+import { CargoEComponent } from './componentes/catalogo/cargo/cargo-e/cargo-e.component';
+import { DireccionAComponent } from './componentes/catalogo/direccion/direccion-a/direccion-a.component';
+import { DireccionDComponent } from './componentes/catalogo/direccion/direccion-d/direccion-d.component';
+import { DireccionEComponent } from './componentes/catalogo/direccion/direccion-e/direccion-e.component';
+import { EmpleadoAComponent } from './componentes/catalogo/empleado/empleado-a/empleado-a.component';
+import { EmpleadoDComponent } from './componentes/catalogo/empleado/empleado-d/empleado-d.component';
+import { EmpleadoEComponent } from './componentes/catalogo/empleado/empleado-e/empleado-e.component';
+import { TipoDireccionAComponent } from './componentes/catalogo/tipo-direccion/tipo-direccion-a/tipo-direccion-a.component';
+import { TipoDireccionDComponent } from './componentes/catalogo/tipo-direccion/tipo-direccion-d/tipo-direccion-d.component';
+import { TipoDireccionEComponent } from './componentes/catalogo/tipo-direccion/tipo-direccion-e/tipo-direccion-e.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +71,23 @@ import { TareaDComponent } from './componentes/planificacion/tarea-d/tarea-d.com
     CatgoriaTareaOperacionDComponent,
     CatgoriaTareaOperacionEComponent,
     PendienteComponent,
-    TareaDComponent
+    TareaDComponent,
+    CargoComponent,
+    DireccionComponent,
+    EmpleadoComponent,
+    TipoDireccionComponent,
+    CargoAComponent,
+    CargoDComponent,
+    CargoEComponent,
+    DireccionAComponent,
+    DireccionDComponent,
+    DireccionEComponent,
+    EmpleadoAComponent,
+    EmpleadoDComponent,
+    EmpleadoEComponent,
+    TipoDireccionAComponent,
+    TipoDireccionDComponent,
+    TipoDireccionEComponent
   ],
   imports: [
     BrowserModule,

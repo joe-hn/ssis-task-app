@@ -88,6 +88,17 @@ export class ApiTareaOperacionService {
     return this.http.post<any>(this.url + 'tareaoperacion', JSON.stringify(modelo), httpOptions).pipe();
   }
 
+  PostTareaEntrega(modelo): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'token': localStorage.getItem('_tk')
+      })
+    };
+
+    return this.http.post<any>(this.url + 'tareaoperacion/tareaentrega', JSON.stringify(modelo), httpOptions).pipe();
+  }
+
   Patch(id, modelo): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({

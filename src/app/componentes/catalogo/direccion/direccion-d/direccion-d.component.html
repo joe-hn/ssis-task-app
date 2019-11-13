@@ -1,0 +1,36 @@
+<div class="container">
+    <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+
+        <h6>Eliminar dirección</h6>
+        <hr class="mb-4">
+
+        <div class="example-container">
+            <mat-form-field>
+                <input matInput placeholder="Tipo dirección" name="tipoDireccion" #tipoDireccion="ngModel"
+                    [(ngModel)]="modelo.TIPO_DIRECCION" value={{modelo.TIPO_DIRECCION}} required readonly>                
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Nombre de la dirección" name="nombre" #nombre="ngModel"
+                    [(ngModel)]="modelo.NOMBRE" value={{modelo.NOMBRE}} required readonly>
+                <mat-error *ngIf="!nombre.valid && nombre.touched">
+                    Ingrese el nombre de la dirección
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <hr class="mb-4">
+
+        <div class="btn-group btn-group-toggle">
+            <button mat-icon-button type="submit" matTooltip="Guardar y salir">
+                <mat-icon>save</mat-icon>
+            </button>
+
+            <button mat-icon-button type="button" [routerLink]="['/catalogo']" matTooltip="Cancelar">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
+
+    </form>
+</div>
