@@ -57,23 +57,16 @@ export class TareaDescripcionSolicitudComponent implements OnInit {
 
   GET_DIRECCION() {
     this._apiDireccion.Get().subscribe(response => {
-      this.direccionModelo = response.modelo;
-
-      this.GET_CARGO();
-    })
-  }
-
-  GET_CARGO() {
-    this._apiCargo.Get().subscribe(response => {
-      this.cargoModelo = response.modelo;
+      this.direccionModelo = response.modelo;     
     });
   }
 
+ 
   onSelectedEmpleado() {
-    if (this.emplModelo.DIRECCION_ID != 0 && this.emplModelo.CARGO_ID != 0) {
-      this._apiEmpleado.DireccionCargo(this.emplModelo.DIRECCION_ID, this.emplModelo.CARGO_ID).subscribe(response => {
+    if (this.emplModelo.DIRECCION_ID) {
+      this._apiEmpleado.getDireccion(this.emplModelo.DIRECCION_ID).subscribe(response => {
         this.empleadoModelo = response.modelo;
-      })
+      });
     }
   }
 

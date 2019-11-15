@@ -18,6 +18,6 @@ export class tareaOperacionDescripcion {
         public DIAS: string,
         public FECHA_FINAL_DESCRIPCION: String,
         public USR: string,
-        public RESPUESTA_DES: string
+        public RESPUESTA_DES: string        
     ) { }
 }

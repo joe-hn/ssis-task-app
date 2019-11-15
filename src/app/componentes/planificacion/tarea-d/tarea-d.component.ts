@@ -6,7 +6,7 @@ import * as moment from 'moment';
 import { ApiTareaOperacionService } from '../../../servicio/api-tarea-operacion.service';
 
 import { tareaOperacion } from 'src/app/modelo/tareaOperacion';
- 
+
 @Component({
   selector: 'app-tarea-d',
   templateUrl: './tarea-d.component.html',
@@ -21,11 +21,11 @@ export class TareaDComponent implements OnInit {
 
   constructor(
     private _api: ApiTareaOperacionService,
-    
+
     private _route: ActivatedRoute,
     private _router: Router
   ) {
-    this.modelo = new tareaOperacion(0, '', 0, 0, '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', 0, 0, 0, 0, '', '', '', '', '', 0);    
+    this.modelo = new tareaOperacion(0, '', 0, 0, '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0, '', '', '', 0);
     this.date = new Date();
     this.dateValidador = new Date();
   }
@@ -36,7 +36,7 @@ export class TareaDComponent implements OnInit {
 
       this._api.GetId(id).subscribe(response => {
         this.modelo = response.modelo;
-        this.date = new Date(this.modelo.ANIO, this.modelo.MES, this.modelo.DIA);      
+        this.date = new Date(this.modelo.ANIO, this.modelo.MES, this.modelo.DIA);
       });
     });
   }
@@ -51,7 +51,7 @@ export class TareaDComponent implements OnInit {
         this._api.Delete(id, this.modelo.USR).subscribe(response => {
           this._router.navigate(['/tablero']);
         });
-  
+
       });
     }
   }

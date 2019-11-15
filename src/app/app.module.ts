@@ -47,6 +47,8 @@ import { EmpleadoEComponent } from './componentes/catalogo/empleado/empleado-e/e
 import { TipoDireccionAComponent } from './componentes/catalogo/tipo-direccion/tipo-direccion-a/tipo-direccion-a.component';
 import { TipoDireccionDComponent } from './componentes/catalogo/tipo-direccion/tipo-direccion-d/tipo-direccion-d.component';
 import { TipoDireccionEComponent } from './componentes/catalogo/tipo-direccion/tipo-direccion-e/tipo-direccion-e.component';
+import { TaberoJefeComponent } from './componentes/tablero/tabero-jefe/tabero-jefe.component';
+import { InformacionGeneralComponent } from './componentes/tablero/informacion-general/informacion-general.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,9 @@ import { TipoDireccionEComponent } from './componentes/catalogo/tipo-direccion/t
     EmpleadoEComponent,
     TipoDireccionAComponent,
     TipoDireccionDComponent,
-    TipoDireccionEComponent
+    TipoDireccionEComponent,
+    TaberoJefeComponent,
+    InformacionGeneralComponent
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,7 @@ export class TareaDescripcionMComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router
   ) {
-    this.modelo = new tareaOperacion(0, '', 0, 0, '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', 0, 0, 0, 0, '', '', '', '', '', 0);
+    this.modelo = new tareaOperacion(0, '', 0, 0, '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0, '', '', '', 0);
   }
 
   ngOnInit() {

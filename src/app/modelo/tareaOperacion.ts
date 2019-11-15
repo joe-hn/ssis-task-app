@@ -31,6 +31,13 @@ export class tareaOperacion {
         public ALERTA_ESTIMADO: string,
         public ALERTA: string,
         public EDT_TAREA: string,
-        public DIAS_FALTANTES: Number
+        public DIAS_FALTANTES: Number,
+        public PENDIENTE_DIAS_RETRASADOS: number,
+        public EJECUCION_DIAS_RETRASADOS: number,
+        public FECHA_COMPLETACION: string,
+        public FECHA_COMPLETACION_DESCRIPCION: string,
+        public ALERTA_FINAL: string,
+        public DIAS_RETRASO: number
+
     ) { }
 }

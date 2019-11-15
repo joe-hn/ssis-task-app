@@ -83,3 +83,12 @@ button {
   background: #FF0000;
   margin-top: 28px;
 }
+
+.footer-fijo {  
+  position: fixed;
+  bottom: 0;
+  width: 98%;
+  height: 80px; 
+  
+  
+}

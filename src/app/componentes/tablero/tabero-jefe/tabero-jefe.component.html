@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
     <div class="row">
         <div class="col col-lg-12 text-center">
@@ -84,7 +85,7 @@
                     <p><small>Tarea: {{i.EDT_TAREA}}, <em>responsable:<mark>{{i.RESPONSABLE}}</mark>, días retrasados:
                                 {{i.PENDIENTE_DIAS_RETRASADOS}}</em> </small></p>
                     <div class="btn-group">
-                        <button class="btn btn-sm btn-info" [routerLink]="['/informacion-general', i.ID]"><small>Ver..</small></button>
+                        <button class="btn btn-sm btn-info"><small>Ver..</small></button>
                     </div>
                 </div>
             </div>
@@ -93,7 +94,7 @@
                 <div class="card-body">
                     <p><small>Tarea: {{i.EDT_TAREA}}, <em>responsable:<mark>{{i.RESPONSABLE}}</mark></em></small></p>
                     <div class="btn-group">
-                        <button class="btn btn-sm btn-info" [routerLink]="['/informacion-general', i.ID]"><small>Ver..</small></button>
+                        <button class="btn btn-sm btn-info"><small>Ver..</small></button>
                     </div>
                 </div>
             </div>
@@ -102,7 +103,7 @@
                 <div class="card-body">
                     <p><small>Tarea: {{i.EDT_TAREA}}, <em>responsable:<mark>{{i.RESPONSABLE}}</mark></em></small></p>
                     <div class="btn-group">
-                        <button class="btn btn-sm btn-info" [routerLink]="['/informacion-general', i.ID]"><small>Ver..</small></button>
+                        <button class="btn btn-sm btn-info"><small>Ver..</small></button>
                     </div>
                 </div>
             </div>
@@ -117,7 +118,7 @@
                 <div class="card-body">
                     <p><small>Tarea: {{i.EDT_TAREA}}, <em>responsable:<mark>{{i.RESPONSABLE}}</mark></em></small></p>
                     <div class="btn-group">
-                        <button class="btn btn-sm btn-info" [routerLink]="['/informacion-general', i.ID]"><small>Ver..</small></button>
+                        <button class="btn btn-sm btn-info"><small>Ver..</small></button>
                     </div>
                 </div>
             </div>
@@ -135,7 +136,7 @@
             <mat-menu #menu="matMenu">
                 <button mat-menu-item *ngIf="usuarioModelo.JEFE">
                     <mat-icon>person_outline</mat-icon>
-                    <span [routerLink]="['/tablero-jefe']">Ver mis tareas</span>
+                    <span [routerLink]="['/tablero']">Ver tarea de mi equipo</span>
                 </button>
                 <button mat-menu-item>
                     <mat-icon>view_headline</mat-icon>

@@ -36,7 +36,7 @@ export class TareaEComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router
   ) {
-    this.modelo = new tareaOperacion(0, '', 0, 0, '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', 0, 0, 0, 0, '', '', '', '', '', 0);
+    this.modelo = new tareaOperacion(0, '', 0, 0, '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0, '', '', '', 0);
     this.usuarioLogeo = JSON.parse(localStorage.getItem('_user'));
     this.date = new Date();
     this.dateValidador = new Date();
@@ -49,7 +49,7 @@ export class TareaEComponent implements OnInit {
       this._api.GetId(id).subscribe(response => {
         this.modelo = response.modelo;
         this.date = new Date(this.modelo.ANIO, this.modelo.MES, this.modelo.DIA);
-       
+
         console.log(this.modelo);
         this.GET_CATEGORIA();
       });
@@ -94,7 +94,7 @@ export class TareaEComponent implements OnInit {
 
       this.modelo.FECHA_FINAL_ESTIMADA_DESCRIPCION = moment(this.date).locale('es').format('LL');
       this.modelo.FECHA_FINAL_ESTIMADA = moment(this.date).format('YYYYMMDD');
-      
+
       this._api.Patch(this.modelo.ID, this.modelo).subscribe(response => {
         this._router.navigate(['/tablero']);
       });

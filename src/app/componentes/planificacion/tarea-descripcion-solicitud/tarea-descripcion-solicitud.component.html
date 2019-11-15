@@ -12,16 +12,7 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-
-            <mat-form-field>
-                <mat-select placeholder="Cargo" name="cargo" #cargo="ngModel" [(ngModel)]="emplModelo.CARGO_ID"
-                    required>
-                    <mat-option *ngFor='let r of cargoModelo' [value]='r.ID' (click)="onSelectedEmpleado()">
-                        {{r.NOMBRE}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
+           
             <mat-form-field>
                     <mat-select placeholder="Remitente" name="remitente" #remitente="ngModel" [(ngModel)]="modelo.RESPONSABLE_ID"
                         required>

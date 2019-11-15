@@ -77,6 +77,17 @@ export class ApiEmpleadoService {
     return this.http.get(this.url + 'empleado/direccionCargo/' + direccionId + '/' + cargoId, httpOptions).pipe(map(this.extractData));
   }
 
+  getDireccion(direccionId): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'token': localStorage.getItem('_tk')
+      })
+    };
+
+    return this.http.get(this.url + 'empleado/direccion/' + direccionId, httpOptions).pipe(map(this.extractData));
+  }
+
   Post(modelo): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({

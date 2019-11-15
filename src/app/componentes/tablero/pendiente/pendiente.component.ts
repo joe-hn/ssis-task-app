@@ -22,7 +22,7 @@ export class PendienteComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router
   ) {
-    this.modelo = new tareaOperacion(0, '', 0, 0, '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', 0, 0, 0, 0, '', '', '', '', '', 0);
+    this.modelo = new tareaOperacion(0, '', 0, 0, '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0, '', '', '', 0);
     this.date = new Date();
   }
 
@@ -58,6 +58,6 @@ export class PendienteComponent implements OnInit {
 
       });
 
-    } 
+    }
   }
 }

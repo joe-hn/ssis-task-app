@@ -9,13 +9,13 @@ import { tareaOperacionDescripcion } from '../../../modelo/tareaOperacionDescrip
 import { tareaOperacion } from '../../../modelo/tareaOperacion';
 
 @Component({
-  selector: 'app-ejecucion',
-  templateUrl: './ejecucion.component.html',
+  selector: 'app-informacion-general',
+  templateUrl: './informacion-general.component.html',
   styleUrls: ['../../../estilos/angular-material.css'],
   providers: [ApiTareaOperacionDescripcionService,
     ApiTareaOperacionService]
 })
-export class EjecucionComponent implements OnInit {
+export class InformacionGeneralComponent implements OnInit {
   modelo: tareaOperacionDescripcion;
   tareaDescripcionModelo: tareaOperacionDescripcion[];
   tareaModelo: tareaOperacion;
@@ -43,5 +43,5 @@ export class EjecucionComponent implements OnInit {
       });
     });
   }
-
+  
 }

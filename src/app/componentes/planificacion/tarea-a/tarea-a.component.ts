@@ -37,7 +37,7 @@ export class TareaAComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router
   ) {
-    this.modelo = new tareaOperacion(0, '', 0, 0, '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', 0, 0, 0, 0, '', '', '', '', '', 0);
+    this.modelo = new tareaOperacion(0, '', 0, 0, '', '', '', 0, '', '', 0, '', '', '', 0, '', '', '', '', '', '', 0, 0, 0, 0, '', '', '', '', '', 0, 0, 0, '', '', '', 0);
     this.usuarioLogeo = JSON.parse(localStorage.getItem('_user'));
     this.date = new Date();
     this.dateValidador = new Date();
@@ -69,7 +69,7 @@ export class TareaAComponent implements OnInit {
   }
 
   onSelectCategoria() {
-    this._api.GetMaxCount(this.modelo.CATEGORIA_TAREA_OPERACION_ID).subscribe(response => {      
+    this._api.GetMaxCount(this.modelo.CATEGORIA_TAREA_OPERACION_ID).subscribe(response => {
       if (response.modelo != null) {
         this.modelo.EDT = response.modelo.EDT_MAX + 1;
       } else {

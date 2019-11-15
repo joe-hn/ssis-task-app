@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { TableroComponent } from './componentes/tablero/tablero.component';
+import { TaberoJefeComponent } from './componentes/tablero/tabero-jefe/tabero-jefe.component';
 import { LoginComponent } from './componentes/login/login.component';
 
 import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
@@ -39,11 +40,13 @@ import { TareaDescripcionMComponent } from './componentes/planificacion/tarea-de
 import { TareaDescripcionSolicitudComponent } from './componentes/planificacion/tarea-descripcion-solicitud/tarea-descripcion-solicitud.component';
 import { TareaSolicitudComponent } from './componentes/planificacion/tarea-solicitud/tarea-solicitud.component';
 import { TareaSolicitudSalidaComponent } from './componentes/planificacion/tarea-solicitud-salida/tarea-solicitud-salida.component';
+import { InformacionGeneralComponent } from './componentes/tablero/informacion-general/informacion-general.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'tablero', component: TableroComponent },
+  { path: 'tablero-jefe', component: TaberoJefeComponent },
 
   { path: 'tarea-a', component: TareaAComponent },
   { path: 'tarea-e/:id', component: TareaEComponent },
@@ -80,7 +83,8 @@ const routes: Routes = [
   { path: 'empleado-e/:id', component: EmpleadoEComponent },
   { path: 'empleado-d/:id', component: EmpleadoDComponent },
 
-  { path: 'pendiente/:id', component: PendienteComponent }
+  { path: 'pendiente/:id', component: PendienteComponent },
+  { path: 'informacion-general/:id', component: InformacionGeneralComponent }
 
 ];
 
