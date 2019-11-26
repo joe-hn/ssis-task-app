@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoMaterialModule } from './comunes/DemoMaterialModule';
-import { HashLocationStrategy, LocationStrategy, PathLocationStrategy, APP_BASE_HREF } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { registerLocaleData } from '@angular/common';
 import localesHN from '@angular/common/locales/es-HN';
@@ -105,7 +105,7 @@ import { InformacionGeneralComponent } from './componentes/tablero/informacion-g
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-HN' },
-    { provide: APP_BASE_HREF, useValue: '/ssis/' }
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })
