@@ -13,11 +13,6 @@
           <mat-menu #menu="matMenu">
   
             <button mat-menu-item *ngIf="!flag">
-              <mat-icon>fingerprint</mat-icon>
-              <span (click)="cierreSecion()">Cierre sesión</span>
-            </button>          
-  
-            <button mat-menu-item *ngIf="!flag">
               <mat-icon>view_module</mat-icon>
               <span [routerLink]="['/catalogo']">Catálogos</span>
             </button>

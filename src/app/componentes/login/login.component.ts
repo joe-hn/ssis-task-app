@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('_tk', response.tk);
 
           this._api.usuarioId(this.modelo.ID).subscribe(resUsuario => {
-            localStorage.setItem('_user', JSON.stringify(resUsuario.modelo));
+            localStorage.setItem('_user', JSON.stringify(resUsuario.modelo));      
           });
 
           this._router.navigate(['/tablero']);
