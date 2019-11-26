@@ -42,8 +42,7 @@ export class TableroComponent implements OnInit {
   ngOnInit() {
 
     this.usuarioModelo = JSON.parse(localStorage.getItem('_user'));    
-    console.log('******** MODELO DE USUARIO LOGUE', this.usuarioModelo);
-
+    
     if (this.usuarioModelo.JEFE) {
       this._api.GetTareaDireccion(this.usuarioModelo.DIRECCION_ID).subscribe(response => {
         this.tareaModelo = response.modelo;                

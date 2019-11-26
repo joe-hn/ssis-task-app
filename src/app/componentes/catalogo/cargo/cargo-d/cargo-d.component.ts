@@ -39,7 +39,7 @@ export class CargoDComponent implements OnInit {
   onSubmit() {
     if (this.modelo.NOMBRE) {
       this._api.Delete(this.modelo.ID, localStorage.getItem('_u')).subscribe(response => {
-        this._router.navigate(['/programa-proyecto']);
+        this._router.navigate(['/catalogo']);
       });
     } else {
 
