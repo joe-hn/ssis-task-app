@@ -1,0 +1,65 @@
+<div class="container">
+    <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+
+        <h6>Eliminar usuario</h6>
+        <hr class="mb-4">
+
+        <div class="example-container">
+            <mat-form-field>
+                <input matInput placeholder="Rol" name="rol" #rol="ngModel" [(ngModel)]="modelo.ROL"
+                    value={{modelo.ROL}} required readonly>                
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Tipo dirección" name="tipo" #tipo="ngModel" [(ngModel)]="modelo.TIPO_DIRECCION"
+                    value={{modelo.TIPO_DIRECCION}} required readonly>
+               
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Dirección" name="direccion" #direccion="ngModel" [(ngModel)]="modelo.DIRECCION"
+                    value={{modelo.DIRECCION}} required readonly>
+                
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Nombre del usuario" name="nombre" #nombre="ngModel"
+                    [(ngModel)]="modelo.NOMBRE" value={{modelo.NOMBRE}} required readonly>
+                
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="User Name" name="userName" #userName="ngModel" [(ngModel)]="modelo.USUARIO"
+                    value={{modelo.USUARIO}} required readonly>
+                
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Email" name="email" #email="ngModel" [(ngModel)]="modelo.EMAIL"
+                    value={{modelo.EMAIL}} required readonly>
+                
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput placeholder="Estado" name="estado" #estado="ngModel" [(ngModel)]="modelo.ESTADO"
+                    value={{modelo.ESTADO}} required readonly>
+                
+            </mat-form-field>
+
+        </div>
+
+        <hr class="mb-4">
+
+        <div class="btn-group btn-group-toggle">
+            <button mat-icon-button type="submit" matTooltip="Guardar">
+                <mat-icon>save</mat-icon>
+            </button>
+
+            <button mat-icon-button type="button" [routerLink]="['/seguridad']" matTooltip="Cancelar">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
+
+
+    </form>
+</div>

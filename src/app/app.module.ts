@@ -50,6 +50,16 @@ import { TipoDireccionDComponent } from './componentes/catalogo/tipo-direccion/t
 import { TipoDireccionEComponent } from './componentes/catalogo/tipo-direccion/tipo-direccion-e/tipo-direccion-e.component';
 import { TaberoJefeComponent } from './componentes/tablero/tabero-jefe/tabero-jefe.component';
 import { InformacionGeneralComponent } from './componentes/tablero/informacion-general/informacion-general.component';
+import { SeguridadComponent } from './componentes/seguridad/seguridad.component';
+import { RolComponent } from './componentes/seguridad/rol/rol.component';
+import { UsuarioComponent } from './componentes/seguridad/usuario/usuario.component';
+import { RolAComponent } from './componentes/seguridad/rol/rol-a/rol-a.component';
+import { RolEComponent } from './componentes/seguridad/rol/rol-e/rol-e.component';
+import { RolDComponent } from './componentes/seguridad/rol/rol-d/rol-d.component';
+import { UsuarioAComponent } from './componentes/seguridad/usuario/usuario-a/usuario-a.component';
+import { UsuarioCeComponent } from './componentes/seguridad/usuario/usuario-ce/usuario-ce.component';
+import { UsuarioDComponent } from './componentes/seguridad/usuario/usuario-d/usuario-d.component';
+import { UsuarioEComponent } from './componentes/seguridad/usuario/usuario-e/usuario-e.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +102,17 @@ import { InformacionGeneralComponent } from './componentes/tablero/informacion-g
     TipoDireccionDComponent,
     TipoDireccionEComponent,
     TaberoJefeComponent,
-    InformacionGeneralComponent
+    InformacionGeneralComponent,
+    SeguridadComponent,
+    RolComponent,
+    UsuarioComponent,
+    RolAComponent,
+    RolEComponent,
+    RolDComponent,
+    UsuarioAComponent,
+    UsuarioCeComponent,
+    UsuarioDComponent,
+    UsuarioEComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
- 
+
 import { ApiTareaOperacionService } from '../../servicio/api-tarea-operacion.service';
 
 import { tareaOperacion } from '../../modelo/tareaOperacion';
@@ -16,73 +16,59 @@ import { usuario } from '../../modelo/usuario';
 export class TableroComponent implements OnInit {
   usuarioModelo: usuario;
   tareaModelo: tareaOperacion[];
-  
-  tareapendienteverde: tareaOperacion[];
-  tareapendienteamarillo: tareaOperacion[];
-  tareapendienterojo: tareaOperacion[];
 
-  tareaejecucionverde: tareaOperacion[];
-  tareaejecucionamarillo: tareaOperacion[];
-  tareaejecucionrojo: tareaOperacion[];
+  tareaRoja_noIniciada: tareaOperacion[];
+  tareaRoja_ejecucion: tareaOperacion[];
 
-  tareaefinalizadanverde: tareaOperacion[];
-  tareafinalizadaamarillo: tareaOperacion[];
-  tareafinalizadarojo: tareaOperacion[];
+  tareaAmarilla_noIniciada: tareaOperacion[];
+  tareaAmarilla_ejecucion: tareaOperacion[];
 
-  tareacanclada: tareaOperacion[];
+  tareaVerde_noIniciada: tareaOperacion[];
+  tareaVerde_ejecucion: tareaOperacion[];
+
 
   constructor(
     private _api: ApiTareaOperacionService,
     private _route: ActivatedRoute,
     private _router: Router
   ) {
- 
+
   }
 
   ngOnInit() {
 
-    this.usuarioModelo = JSON.parse(localStorage.getItem('_user'));    
-    
+    this.usuarioModelo = JSON.parse(localStorage.getItem('_user'));
+
     if (this.usuarioModelo.JEFE) {
       this._api.GetTareaDireccion(this.usuarioModelo.DIRECCION_ID).subscribe(response => {
-        this.tareaModelo = response.modelo;                
+        this.tareaModelo = response.modelo;
 
-        this.tareapendienteverde = this.tareaModelo.filter(c=> c.ESTADO == 'NO INICIADA' && c.ALERTA_ESTIMADO == 'VERDE');
-        this.tareapendienteamarillo = this.tareaModelo.filter(c=> c.ESTADO == 'NO INICIADA' && c.ALERTA_ESTIMADO == 'AMARILLO');
-        this.tareapendienterojo = this.tareaModelo.filter(c=> c.ESTADO == 'NO INICIADA' && c.ALERTA_ESTIMADO == 'ROJO');
+        this.tareaRoja_noIniciada = this.tareaModelo.filter(c => c.ESTADO == 'NO INICIADA' && c.ALERTA_ESTIMADO == 'ROJO');
+        this.tareaRoja_ejecucion = this.tareaModelo.filter(c => c.ESTADO == 'EN EJECUCION' && c.ALERTA == 'ROJO');
 
-        this.tareaejecucionverde = this.tareaModelo.filter(c=> c.ESTADO == 'EN EJECUCION' && c.ALERTA == 'VERDE');
-        this.tareaejecucionamarillo = this.tareaModelo.filter(c=> c.ESTADO == 'EN EJECUCION' && c.ALERTA == 'AMARILLO');
-        this.tareaejecucionrojo = this.tareaModelo.filter(c=> c.ESTADO == 'EN EJECUCION' && c.ALERTA == 'ROJO');
+        this.tareaAmarilla_ejecucion = this.tareaModelo.filter(c => c.ESTADO == 'EN EJECUCION' && c.ALERTA == 'AMARILLO');
+        this.tareaAmarilla_noIniciada = this.tareaModelo.filter(c => c.ESTADO == 'NO INICIADA' && c.ALERTA_ESTIMADO == 'AMARILLO');
 
-        this.tareaefinalizadanverde = this.tareaModelo.filter(c=> c.ESTADO == 'COMPLETADA' && c.ALERTA_FINAL == 'VERDE');
-        this.tareafinalizadaamarillo = this.tareaModelo.filter(c=> c.ESTADO == 'COMPLETADA' && c.ALERTA_FINAL == 'AMARILLO');
-        this.tareafinalizadarojo = this.tareaModelo.filter(c=> c.ESTADO == 'COMPLETADA' && c.ALERTA_FINAL == 'ROJO');
-        
-        this.tareacanclada = this.tareaModelo.filter(c=> c.ESTADO == 'CANCELADA');
-       
+        this.tareaVerde_ejecucion = this.tareaModelo.filter(c => c.ESTADO == 'EN EJECUCION' && c.ALERTA == 'VERDE');
+        this.tareaVerde_noIniciada = this.tareaModelo.filter(c => c.ESTADO == 'NO INICIADA' && c.ALERTA_ESTIMADO == 'VERDE');
+
       });
     } else {
       this._api.GetTareaResponsable(this.usuarioModelo.ID).subscribe(response => {
-        this.tareaModelo = response.modelo;        
+        this.tareaModelo = response.modelo;
 
-        this.tareapendienteverde = this.tareaModelo.filter(c=> c.ESTADO == 'NO INICIADA' && c.ALERTA_ESTIMADO == 'VERDE');
-        this.tareapendienteamarillo = this.tareaModelo.filter(c=> c.ESTADO == 'NO INICIADA' && c.ALERTA_ESTIMADO == 'AMARILLO');
-        this.tareapendienterojo = this.tareaModelo.filter(c=> c.ESTADO == 'NO INICIADA' && c.ALERTA_ESTIMADO == 'ROJO');
+        this.tareaRoja_noIniciada = this.tareaModelo.filter(c => c.ESTADO == 'NO INICIADA' && c.ALERTA_ESTIMADO == 'ROJO');
+        this.tareaRoja_ejecucion = this.tareaModelo.filter(c => c.ESTADO == 'EN EJECUCION' && c.ALERTA == 'ROJO');
 
-        this.tareaejecucionverde = this.tareaModelo.filter(c=> c.ESTADO == 'EN EJECUCION' && c.ALERTA == 'VERDE');
-        this.tareaejecucionamarillo = this.tareaModelo.filter(c=> c.ESTADO == 'EN EJECUCION' && c.ALERTA == 'AMARILLO');
-        this.tareaejecucionrojo = this.tareaModelo.filter(c=> c.ESTADO == 'EN EJECUCION' && c.ALERTA == 'ROJO');
+        this.tareaAmarilla_ejecucion = this.tareaModelo.filter(c => c.ESTADO == 'EN EJECUCION' && c.ALERTA == 'AMARILLO');
+        this.tareaAmarilla_noIniciada = this.tareaModelo.filter(c => c.ESTADO == 'NO INICIADA' && c.ALERTA_ESTIMADO == 'AMARILLO');
 
-        this.tareaefinalizadanverde = this.tareaModelo.filter(c=> c.ESTADO == 'COMPLETADA' && c.ALERTA_FINAL == 'VERDE');
-        this.tareafinalizadaamarillo = this.tareaModelo.filter(c=> c.ESTADO == 'COMPLETADA' && c.ALERTA_FINAL == 'AMARILLO');
-        this.tareafinalizadarojo = this.tareaModelo.filter(c=> c.ESTADO == 'COMPLETADA' && c.ALERTA_FINAL == 'ROJO');
+        this.tareaVerde_ejecucion = this.tareaModelo.filter(c => c.ESTADO == 'EN EJECUCION' && c.ALERTA == 'VERDE');
+        this.tareaVerde_noIniciada = this.tareaModelo.filter(c => c.ESTADO == 'NO INICIADA' && c.ALERTA_ESTIMADO == 'VERDE');
 
-        this.tareacanclada = this.tareaModelo.filter(c=> c.ESTADO == 'CANCELADA');
-      
       });
     }
- 
+
   }
 
 }

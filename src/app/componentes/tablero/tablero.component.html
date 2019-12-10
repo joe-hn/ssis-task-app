@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col col-lg-12 text-center">
             <h6 class="jumbotron-heading">Tablero de tareas</h6>
@@ -6,123 +6,81 @@
     </div>
 
     <div class="row">
-        <div class="col bg-light">
-            <div class="font-italic text-center">
-                <p>Pendientes de inicio</p>
+        <div class="col-sm card" style="background-color: #FBEFEF;">
+            <div class="card-header">
+                <p>Atrasadas</p>
             </div>
 
-            <div class="card mb-3" style="border-color: red;" *ngFor="let i of tareapendienterojo">
-                <div class="card-body">
-                    <p><small>Tarea: {{i.EDT_TAREA}}, <em>responsable:<mark>{{i.RESPONSABLE}}</mark>, días retrasados:
-                                {{i.PENDIENTE_DIAS_RETRASADOS}}</em> </small></p>
-                    <div class="btn-group">
-                        <button class="btn btn-sm btn-info" [routerLink]="['/pendiente', i.ID]"><small>Ver..</small></button>
-                    </div>
+            <div *ngFor="let i of tareaRoja_ejecucion">
+                <div style="background-color: whitesmoke; border-radius: 2px;">
+                    <p class="mb-2" style="padding: 2px;"><small><a
+                                [routerLink]="['/ejecucion', i.ID]">Tarea:{{i.EDT_TAREA}}</a>,
+                            <em>responsable:{{i.RESPONSABLE}}, estado: Ejecución, días
+                                retrasados:{{i.PENDIENTE_DIAS_RETRASADOS}}</em>
+                        </small></p>
                 </div>
             </div>
 
-            <div class="card mb-3" style="border-color: yellow;" *ngFor="let i of tareapendienteamarillo">
-                <div class="card-body">
-                    <p><small>Tarea: {{i.EDT_TAREA}}, <em>responsable:<mark>{{i.RESPONSABLE}}</mark></em></small></p>
-                    <div class="btn-group">
-                        <button class="btn btn-sm btn-info" [routerLink]="['/pendiente', i.ID]"><small>Ver..</small></button>
-                    </div>
+            <div *ngFor="let i of tareaRoja_noIniciada">
+                <div style="background-color: whitesmoke; border-radius: 2px;">
+                    <p class="mb-2" style="padding: 2px;"><small><a
+                                [routerLink]="['/pendiente', i.ID]">Tarea:{{i.EDT_TAREA}}</a>,
+                            <em>responsable:{{i.RESPONSABLE}}, estado: No iniciada, días
+                                retrasados:{{i.PENDIENTE_DIAS_RETRASADOS}}</em></small></p>
                 </div>
             </div>
 
-            <div class="card mb-3" style="border-color: green;" *ngFor="let i of tareapendienteverde">
-                <div class="card-body">
-                    <p><small>Tarea: {{i.EDT_TAREA}}, <em>responsable:<mark>{{i.RESPONSABLE}}</mark></em></small></p>
-                    <div class="btn-group">
-                        <button class="btn btn-sm btn-info" [routerLink]="['/pendiente', i.ID]"><small>Ver..</small></button>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        <div class="col">
-            <div class="font-italic text-center">
+        <div class="col-sm card" style="background-color: #F7F8E0;">
+            <div class="card-header">
+                <p>Vencen hoy</p>
+            </div>
+
+            <div *ngFor="let i of tareaAmarilla_ejecucion">
+                <div style="background-color: whitesmoke; border-radius: 2px;">
+                    <p class="mb-2" style="padding: 2px;"><small><a
+                                [routerLink]="['/ejecucion', i.ID]">Tarea:{{i.EDT_TAREA}}</a>,
+                            <em>responsable:{{i.RESPONSABLE}}, estado: Ejecución</em>
+                        </small></p>
+                </div>
+            </div>
+
+            <div *ngFor="let i of tareaAmarilla_noIniciada">
+                <div style="background-color: whitesmoke; border-radius: 2px;">
+                    <p class="mb-2" style="padding: 2px;"><small><a
+                                [routerLink]="['/pendiente', i.ID]">Tarea:{{i.EDT_TAREA}}</a>,
+                            <em>responsable:{{i.RESPONSABLE}}, estado: No iniciada</em></small></p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm card" style="background-color: #E0F8E0;">
+            <div class="card-header">
                 <p>En ejecución</p>
             </div>
 
-            <div class="card mb-3" style="border-color: red;" *ngFor="let i of tareaejecucionrojo">
-                <div class="card-body">
-                    <p><small>Tarea: {{i.EDT_TAREA}}, <em>responsable:<mark>{{i.RESPONSABLE}}</mark>, días retrasados:
-                                {{i.PENDIENTE_DIAS_RETRASADOS}}</em> </small></p>
-                    <div class="btn-group">
-                        <button class="btn btn-sm btn-info" [routerLink]="['/ejecucion', i.ID]"><small>Ver..</small></button>
-                    </div>
+            <div *ngFor="let i of tareaVerde_ejecucion">
+                <div style="background-color: whitesmoke; border-radius: 2px;">
+                    <p class="mb-2" style="padding: 2px;"><small><a
+                                [routerLink]="['/ejecucion', i.ID]">Tarea:{{i.EDT_TAREA}}</a>,
+                            <em>responsable:{{i.RESPONSABLE}}, estado: Ejecución</em>
+                        </small></p>
                 </div>
             </div>
 
-            <div class="card mb-3" style="border-color: yellow;" *ngFor="let i of tareaejecucionamarillo">
-                <div class="card-body">
-                    <p><small>Tarea: {{i.EDT_TAREA}}, <em>responsable:<mark>{{i.RESPONSABLE}}</mark></em></small></p>
-                    <div class="btn-group">
-                        <button class="btn btn-sm btn-info" [routerLink]="['/ejecucion', i.ID]"><small>Ver..</small></button>
-                    </div>
+            <div *ngFor="let i of tareaVerde_noIniciada">
+                <div style="background-color: whitesmoke; border-radius: 2px;">
+                    <p class="mb-2" style="padding: 2px;"><small><a
+                                [routerLink]="['/pendiente', i.ID]">Tarea:{{i.EDT_TAREA}}</a>,
+                            <em>responsable:{{i.RESPONSABLE}}, estado: No iniciada</em></small></p>
                 </div>
             </div>
 
-            <div class="card mb-3" style="border-color: green;" *ngFor="let i of tareaejecucionverde">
-                <div class="card-body">
-                    <p><small>Tarea: {{i.EDT_TAREA}}, <em>responsable:<mark>{{i.RESPONSABLE}}</mark></em></small></p>
-                    <div class="btn-group">
-                        <button class="btn btn-sm btn-info" [routerLink]="['/ejecucion', i.ID]"><small>Ver..</small></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col bg-light">
-            <div class="font-italic text-center">
-                <p>Finalizadas</p>
-            </div>
-
-            <div class="card mb-3" style="border-color: red;" *ngFor="let i of tareafinalizadarojo">
-                <div class="card-body">
-                    <p><small>Tarea: {{i.EDT_TAREA}}, <em>responsable:<mark>{{i.RESPONSABLE}}</mark>, días retrasados:
-                                {{i.PENDIENTE_DIAS_RETRASADOS}}</em> </small></p>
-                    <div class="btn-group">
-                        <button class="btn btn-sm btn-info" [routerLink]="['/informacion-general', i.ID]"><small>Ver..</small></button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card mb-3" style="border-color: yellow;" *ngFor="let i of tareafinalizadaamarillo">
-                <div class="card-body">
-                    <p><small>Tarea: {{i.EDT_TAREA}}, <em>responsable:<mark>{{i.RESPONSABLE}}</mark></em></small></p>
-                    <div class="btn-group">
-                        <button class="btn btn-sm btn-info" [routerLink]="['/informacion-general', i.ID]"><small>Ver..</small></button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card mb-3" style="border-color: green;" *ngFor="let i of tareaefinalizadanverde">
-                <div class="card-body">
-                    <p><small>Tarea: {{i.EDT_TAREA}}, <em>responsable:<mark>{{i.RESPONSABLE}}</mark></em></small></p>
-                    <div class="btn-group">
-                        <button class="btn btn-sm btn-info" [routerLink]="['/informacion-general', i.ID]"><small>Ver..</small></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="font-italic text-center">
-                <p>Canceladas</p>
-            </div>
-
-            <div class="card mb-3" *ngFor="let i of tareacanclada">
-                <div class="card-body">
-                    <p><small>Tarea: {{i.EDT_TAREA}}, <em>responsable:<mark>{{i.RESPONSABLE}}</mark></em></small></p>
-                    <div class="btn-group">
-                        <button class="btn btn-sm btn-info" [routerLink]="['/informacion-general', i.ID]"><small>Ver..</small></button>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
+
 </div>
 
 <div class="footer-fijo">

@@ -1,0 +1,40 @@
+<div class="container">
+    <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+  
+      <h6>Agregar nuevo rol</h6>
+      <hr class="mb-4">
+  
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Nombre del rol" name="nombre" #nombre="ngModel" [(ngModel)]="modelo.NOMBRE"
+            value={{modelo.NOMBRE}} required>
+          <mat-error *ngIf="!nombre.valid && nombre.touched">
+            Ingrese el nombre del rol
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <textarea matInput placeholder="Descripción del rol" name="descripcion" #descripcion="ngModel"
+            [(ngModel)]="modelo.DESCRIPCION" value={{modelo.DESCRIPCION}} required></textarea>
+          <mat-error *ngIf="!descripcion.valid && descripcion.touched">
+            Ingrese la descripción del rol
+          </mat-error>
+        </mat-form-field>
+  
+      </div>
+  
+      <hr class="mb-4">
+  
+      <div class="btn-group btn-group-toggle">
+        <button mat-icon-button type="submit" matTooltip="Guardar">
+          <mat-icon>save</mat-icon>
+        </button>
+  
+        <button mat-icon-button type="button" [routerLink]="['/seguridad']" matTooltip="Cancelar">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+  
+  
+    </form>
+  </div>

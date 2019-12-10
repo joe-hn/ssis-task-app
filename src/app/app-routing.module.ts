@@ -7,6 +7,15 @@ import { LoginComponent } from './componentes/login/login.component';
 
 import { CatalogoComponent } from './componentes/catalogo/catalogo.component';
 
+import { SeguridadComponent } from './componentes/seguridad/seguridad.component';
+import { UsuarioAComponent } from './componentes/seguridad/usuario/usuario-a/usuario-a.component';
+import { UsuarioEComponent } from './componentes/seguridad/usuario/usuario-e/usuario-e.component';
+import { UsuarioDComponent } from './componentes/seguridad/usuario/usuario-d/usuario-d.component';
+import { UsuarioCeComponent } from './componentes/seguridad/usuario/usuario-ce/usuario-ce.component';
+import { RolAComponent } from './componentes/seguridad/rol/rol-a/rol-a.component';
+import { RolEComponent } from './componentes/seguridad/rol/rol-e/rol-e.component';
+import { RolDComponent } from './componentes/seguridad/rol/rol-d/rol-d.component';
+
 import { TipoDireccionAComponent } from './componentes/catalogo/tipo-direccion/tipo-direccion-a/tipo-direccion-a.component';
 import { TipoDireccionEComponent } from './componentes/catalogo/tipo-direccion/tipo-direccion-e/tipo-direccion-e.component';
 import { TipoDireccionDComponent } from './componentes/catalogo/tipo-direccion/tipo-direccion-d/tipo-direccion-d.component';
@@ -62,6 +71,15 @@ const routes: Routes = [
   { path: 'tarea-salida', component: TareaSolicitudSalidaComponent },
 
   { path: 'catalogo', component: CatalogoComponent },
+
+  { path: 'seguridad', component: SeguridadComponent },
+  { path: 'usuario-a', component: UsuarioAComponent },
+  { path: 'usuario-e/:id', component: UsuarioEComponent },
+  { path: 'usuario-d/:id', component: UsuarioDComponent },
+  { path: 'usuario-ce/:id', component: UsuarioCeComponent },
+  { path: 'rol-a', component: RolAComponent },
+  { path: 'rol-e/:id', component: RolEComponent },
+  { path: 'rol-d/:id', component: RolDComponent },
 
   { path: 'tipo-direccion-a', component: TipoDireccionAComponent },
   { path: 'tipo-direccion-e/:id', component: TipoDireccionEComponent },

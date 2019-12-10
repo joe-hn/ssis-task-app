@@ -1,0 +1,68 @@
+<div class="container">
+    <form #formAdd="ngForm" (ngSubmit)="onSubmit()">
+
+        <h6>Agregar nuevo usuario</h6>
+        <hr class="mb-4">
+
+        <div class="example-container">
+            <mat-form-field>
+                <mat-select placeholder="Rol" name="rol" #rol="ngModel" [(ngModel)]="modelo.ROL_ID" required>
+                    <mat-option *ngFor='let r of rolMoldelo' [value]='r.ID'>
+                        {{r.NOMBRE}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="!rol.valid && rol.touched">
+                    Ingrese el rol
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select placeholder="Empleado" name="empleado" #empleado="ngModel" [(ngModel)]="modelo.EMPLEADO_ID" required>
+                    <mat-option *ngFor='let r of empleadoModelo' [value]='r.ID'>
+                        {{r.NOMBRE}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="!rol.valid && rol.touched">
+                    Ingrese el empleado
+                </mat-error>
+            </mat-form-field>
+                     
+            <section class="example-section">
+                <mat-checkbox class="example-margin" name="condicion" #condicion="ngModel" [(ngModel)]="modelo.JEFE_MARCA"
+                    value={{modelo.JEFE_MARCA}}>El usuario será responsable de la dirección seleccionada </mat-checkbox>
+            </section>
+        
+            <mat-form-field>
+                <input matInput placeholder="User Name" name="userName" #userName="ngModel" [(ngModel)]="modelo.USUARIO"
+                    value={{modelo.USUARIO}} required>
+                <mat-error *ngIf="!userName.valid && userName.touched">
+                    Ingrese el user name
+                </mat-error>
+            </mat-form-field>        
+
+            <mat-form-field>
+                <input matInput placeholder="Clave" [type]="hide ? 'password' : 'text'" name="pass" #pass="ngModel"
+                    [(ngModel)]="modelo.PASS" value={{modelo.PASS}} required>
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-error *ngIf="!pass.valid && pass.touched">
+                    Ingrese la clave
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <hr class="mb-4">
+
+        <div class="btn-group btn-group-toggle">
+            <button mat-icon-button type="submit" matTooltip="Guardar">
+                <mat-icon>save</mat-icon>
+            </button>
+
+            <button mat-icon-button type="button" [routerLink]="['/seguridad']" matTooltip="Cancelar">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </div>
+
+
+    </form>
+</div>
