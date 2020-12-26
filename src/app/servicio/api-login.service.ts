@@ -29,7 +29,7 @@ export class ApiLoginService {
     };
     
     return this.http.post<any>(this.url + 'usuario/login', JSON.stringify(modelo), httpOptions).pipe();
-  }
+  } 
 
   usuarioId(id): Observable<any> {
     const httpOptions = {

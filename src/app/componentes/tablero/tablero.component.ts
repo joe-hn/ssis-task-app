@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router, ActivatedRoute, Params } from "@angular/router";
 
-import { ApiTareaOperacionService } from '../../servicio/api-tarea-operacion.service';
+import { ApiTareaOperacionService } from "../../servicio/api-tarea-operacion.service";
 
-import { tareaOperacion } from '../../modelo/tareaOperacion';
-import { usuario } from '../../modelo/usuario';
+import { tareaOperacion } from "../../modelo/tareaOperacion";
+import { usuario } from "../../modelo/usuario";
 
 @Component({
-  selector: 'app-tablero',
-  templateUrl: './tablero.component.html',
-  styleUrls: ['../../estilos/angular-material.css'],
-  providers: [ApiTareaOperacionService]
+  selector: "app-tablero",
+  templateUrl: "./tablero.component.html",
+  styleUrls: ["../../estilos/angular-material.css"],
+  providers: [ApiTareaOperacionService],
 })
 export class TableroComponent implements OnInit {
   usuarioModelo: usuario;
@@ -19,25 +19,31 @@ export class TableroComponent implements OnInit {
 
   tareaRoja_noIniciada: tareaOperacion[];
   tareaRoja_ejecucion: tareaOperacion[];
+  tareaRoja_replanificacion: tareaOperacion[];
 
   tareaAmarilla_noIniciada: tareaOperacion[];
   tareaAmarilla_ejecucion: tareaOperacion[];
+  tareaAmarilla_replanificacion: tareaOperacion[];
 
   tareaVerde_noIniciada: tareaOperacion[];
   tareaVerde_ejecucion: tareaOperacion[];
-
+  tareaVerde_replanificacion: tareaOperacion[];
 
   constructor(
     private _api: ApiTareaOperacionService,
     private _route: ActivatedRoute,
     private _router: Router
   ) {
-
+    this.GET();
   }
 
   ngOnInit() {
+    
 
+    /*
     this.usuarioModelo = JSON.parse(localStorage.getItem('_user'));
+
+
 
     if (this.usuarioModelo.JEFE) {
       this._api.GetTareaDireccion(this.usuarioModelo.DIRECCION_ID).subscribe(response => {
@@ -68,7 +74,86 @@ export class TableroComponent implements OnInit {
 
       });
     }
-
+    */
   }
 
+  GET() {
+    this.usuarioModelo = JSON.parse(localStorage.getItem("_user"));
+    
+    if (this.usuarioModelo.JEFE) {
+      this._api
+        .GetTareaDireccion(this.usuarioModelo.DIRECCION_ID)
+        .subscribe((response) => {
+          this.tareaModelo = response.modelo;
+
+          this.tareaRoja_noIniciada = this.tareaModelo.filter(
+            (c) => c.ESTADO == "NO INICIADA" && c.ALERTA_ESTIMADO == "ROJO"
+          );
+          this.tareaRoja_ejecucion = this.tareaModelo.filter(
+            (c) => c.ESTADO == "EN EJECUCION" && c.ALERTA == "ROJO"
+          );
+          this.tareaRoja_replanificacion = this.tareaModelo.filter(
+            (c) => c.ESTADO == "REPLANIFICADA" && c.ALERTA == "ROJO"
+          );
+
+
+          this.tareaAmarilla_ejecucion = this.tareaModelo.filter(
+            (c) => c.ESTADO == "EN EJECUCION" && c.ALERTA == "AMARILLO"
+          );
+          this.tareaAmarilla_noIniciada = this.tareaModelo.filter(
+            (c) => c.ESTADO == "NO INICIADA" && c.ALERTA_ESTIMADO == "AMARILLO"
+          );
+          this.tareaAmarilla_replanificacion = this.tareaModelo.filter(
+            (c) => c.ESTADO == "REPLANIFICADA" && c.ALERTA_ESTIMADO == "AMARILLO"
+          );
+
+          this.tareaVerde_ejecucion = this.tareaModelo.filter(
+            (c) => c.ESTADO == "EN EJECUCION" && c.ALERTA == "VERDE"
+          );
+          this.tareaVerde_noIniciada = this.tareaModelo.filter(
+            (c) => c.ESTADO == "NO INICIADA" && c.ALERTA_ESTIMADO == "VERDE"
+          );
+          this.tareaVerde_replanificacion = this.tareaModelo.filter(
+            (c) => c.ESTADO == "REPLANIFICADA" && c.ALERTA_ESTIMADO == "VERDE"
+          );
+        });
+    } else {
+      this._api
+        .GetTareaResponsable(this.usuarioModelo.ID)
+        .subscribe((response) => {
+          this.tareaModelo = response.modelo;
+
+          this.tareaRoja_noIniciada = this.tareaModelo.filter(
+            (c) => c.ESTADO == "NO INICIADA" && c.ALERTA_ESTIMADO == "ROJO"
+          );          
+          this.tareaRoja_ejecucion = this.tareaModelo.filter(
+            (c) => c.ESTADO == "EN EJECUCION" && c.ALERTA == "ROJO"
+          );
+          this.tareaRoja_replanificacion = this.tareaModelo.filter(
+            (c) => c.ESTADO == "REPLANIFICADA" && c.ALERTA == "ROJO"
+          );          
+
+          this.tareaAmarilla_ejecucion = this.tareaModelo.filter(
+            (c) => c.ESTADO == "EN EJECUCION" && c.ALERTA == "AMARILLO"
+          );
+          this.tareaAmarilla_noIniciada = this.tareaModelo.filter(
+            (c) => c.ESTADO == "NO INICIADA" && c.ALERTA_ESTIMADO == "AMARILLO"
+          );
+          this.tareaAmarilla_replanificacion = this.tareaModelo.filter(
+            (c) => c.ESTADO == "REPLANIFICADA" && c.ALERTA_ESTIMADO == "AMARILLO"
+          );
+
+          this.tareaVerde_ejecucion = this.tareaModelo.filter(
+            (c) => c.ESTADO == "EN EJECUCION" && c.ALERTA == "VERDE"
+          );
+          this.tareaVerde_noIniciada = this.tareaModelo.filter(
+            (c) => c.ESTADO == "NO INICIADA" && c.ALERTA_ESTIMADO == "VERDE"
+          );
+          this.tareaVerde_replanificacion = this.tareaModelo.filter(
+            (c) => c.ESTADO == "REPLANIFICADA" && c.ALERTA_ESTIMADO == "VERDE"
+          );
+        });
+    }
+ 
+  }
 }

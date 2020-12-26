@@ -1,5 +1,5 @@
 <header>
-  <div class="fixed-top" *ngIf="!flag">
+  <div class="fixed-top">
     <mat-toolbar color="primary">
       <mat-toolbar-row>
         <span [routerLink]="['tablero']">SMP</span>
@@ -12,12 +12,12 @@
         </button>
         <mat-menu #menu="matMenu">
 
-          <button mat-menu-item *ngIf="!flag">
+          <button mat-menu-item>
             <mat-icon>pan_tool</mat-icon>
             <span [routerLink]="['/seguridad']">Seguridad</span>
           </button>
 
-          <button mat-menu-item *ngIf="!flag">
+          <button mat-menu-item>
             <mat-icon>view_module</mat-icon>
             <span [routerLink]="['/catalogo']">Catálogos</span>
           </button>

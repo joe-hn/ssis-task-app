@@ -1,3 +1,4 @@
+
 <div class="container">
     <div class="row">
         <div class="col col-lg-12 text-center">
@@ -11,11 +12,21 @@
                 <p>Atrasadas</p>
             </div>
 
+            <div *ngFor="let i of tareaRoja_replanificacion">
+                <div style="background-color: whitesmoke; border-radius: 2px;">
+                    <p class="mb-2" style="padding: 2px;"><small><a
+                                [routerLink]="['/ejecucion', i.ID]">Tarea:{{i.EDT_TAREA}}</a>,
+                            <em>responsable:{{i.RESPONSABLE}}, estado: {{i.ESTADO}}, días
+                                retrasados:{{i.PENDIENTE_DIAS_RETRASADOS}}</em>
+                        </small></p>
+                </div>
+            </div>
+
             <div *ngFor="let i of tareaRoja_ejecucion">
                 <div style="background-color: whitesmoke; border-radius: 2px;">
                     <p class="mb-2" style="padding: 2px;"><small><a
                                 [routerLink]="['/ejecucion', i.ID]">Tarea:{{i.EDT_TAREA}}</a>,
-                            <em>responsable:{{i.RESPONSABLE}}, estado: Ejecución, días
+                            <em>responsable:{{i.RESPONSABLE}}, estado: {{i.ESTADO}}, días
                                 retrasados:{{i.PENDIENTE_DIAS_RETRASADOS}}</em>
                         </small></p>
                 </div>
@@ -37,11 +48,20 @@
                 <p>Vencen hoy</p>
             </div>
 
+            <div *ngFor="let i of tareaAmarilla_replanificacion">
+                <div style="background-color: whitesmoke; border-radius: 2px;">
+                    <p class="mb-2" style="padding: 2px;"><small><a
+                                [routerLink]="['/ejecucion', i.ID]">Tarea:{{i.EDT_TAREA}}</a>,
+                            <em>responsable:{{i.RESPONSABLE}}, estado: {{i.ESTADO}}</em>
+                        </small></p>
+                </div>
+            </div>
+
             <div *ngFor="let i of tareaAmarilla_ejecucion">
                 <div style="background-color: whitesmoke; border-radius: 2px;">
                     <p class="mb-2" style="padding: 2px;"><small><a
                                 [routerLink]="['/ejecucion', i.ID]">Tarea:{{i.EDT_TAREA}}</a>,
-                            <em>responsable:{{i.RESPONSABLE}}, estado: Ejecución</em>
+                            <em>responsable:{{i.RESPONSABLE}}, estado: {{i.ESTADO}}</em>
                         </small></p>
                 </div>
             </div>
@@ -61,11 +81,20 @@
                 <p>En ejecución</p>
             </div>
 
+            <div *ngFor="let i of tareaVerde_replanificacion">
+                <div style="background-color: whitesmoke; border-radius: 2px;">
+                    <p class="mb-2" style="padding: 2px;"><small><a
+                                [routerLink]="['/ejecucion', i.ID]">Tarea:{{i.EDT_TAREA}}</a>,
+                            <em>responsable:{{i.RESPONSABLE}}, estado: {{i.ESTADO}}</em>
+                        </small></p>
+                </div>
+            </div>
+
             <div *ngFor="let i of tareaVerde_ejecucion">
                 <div style="background-color: whitesmoke; border-radius: 2px;">
                     <p class="mb-2" style="padding: 2px;"><small><a
                                 [routerLink]="['/ejecucion', i.ID]">Tarea:{{i.EDT_TAREA}}</a>,
-                            <em>responsable:{{i.RESPONSABLE}}, estado: Ejecución</em>
+                            <em>responsable:{{i.RESPONSABLE}}, estado: {{i.ESTADO}}</em>
                         </small></p>
                 </div>
             </div>
@@ -104,3 +133,4 @@
 
     </div>
 </div>
+

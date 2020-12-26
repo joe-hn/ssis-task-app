@@ -32,7 +32,7 @@ export class TareaRComponent implements OnInit {
     this.usuarioLogeo = JSON.parse(localStorage.getItem('_user'));
     this.date = new Date();
   }
-
+ 
   GET_USUARIO() {
     this._apiUsuario.GetOficial(this.usuarioLogeo.DIRECCION_ID).subscribe(response => {
       this.usuarioModelo = response.modelo;
