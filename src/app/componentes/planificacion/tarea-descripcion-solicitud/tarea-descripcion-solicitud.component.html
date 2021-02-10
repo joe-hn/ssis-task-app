@@ -14,7 +14,7 @@
             </mat-form-field>
            
             <mat-form-field>
-                    <mat-select placeholder="Remitente" name="remitente" #remitente="ngModel" [(ngModel)]="modelo.RESPONSABLE_ID"
+                    <mat-select placeholder="Solicitar Apoyo A" name="remitente" #remitente="ngModel" [(ngModel)]="modelo.RESPONSABLE_ID"
                         required>
                         <mat-option *ngFor='let r of empleadoModelo' [value]='r.ID'>
                             {{r.NOMBRE}}
